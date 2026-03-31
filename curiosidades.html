@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curiosidades e Notícias - Prog. Master Max</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <!-- Font Awesome 6 para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Símbolo da página de Curiosidades */
+        
+        .curiosidades-icon {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent-color) 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        /* Menu flutuante de filtros na sidebar */
+        
+        .filtro-dropdown {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        
+        .filtro-btn {
+            width: 100%;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .filtro-btn:hover {
+            background: #a655d9;
+            transform: translateX(5px);
+        }
+        
+        .filtro-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--card-bg);
+            border: 2px solid var(--accent-color);
+            border-radius: 8px;
+            margin-top: 5px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .filtro-dropdown.ativo .filtro-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .filtro-item {
+            display: block;
+            width: 100%;
+            padding: 10px 15px;
+            background: transparent;
+            border: none;
+            color: var(--text-color);
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .filtro-item:hover {
+            background: rgba(155, 89, 182, 0.1);
+            color: var(--accent-color);
+            padding-left: 20px;
+        }
+        
+        .filtro-item.ativo {
+            background: var(--accent-color);
+            color: white;
+        }
+        
+        .filtro-btn i {
+            transition: transform 0.3s ease;
+        }
+        
+        .filtro-dropdown.ativo .filtro-btn i {
+            transform: rotate(180deg);
+        }
+        /* Estilo para o input de data específica */
+        
+        .data-input-container {
+            padding: 10px 15px;
+            border-top: 1px solid var(--border-color, #ddd);
+        }
+        
+        .data-input-container input {
+            width: 100%;
+            padding: 5px;
+            border-radius: 4px;
+            border: 1px solid var(--accent-color);
+            background: var(--card-bg);
+            color: var(--text-color);
+        }
+        /* Responsividade da sidebar */
+        
+        .barra-lateral:not(.expandida) .filtro-btn {
+            padding: 10px;
+            font-size: 0;
+        }
+        
+        .barra-lateral:not(.expandida) .filtro-btn i {
+            font-size: 1.2rem;
+        }
+        
+        .barra-lateral:not(.expandida) .filtro-menu {
+            left: 100%;
+            top: 0;
+            margin-top: 0;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="img/logo.png" alt="Logo" class="logo">
+                </a>
+                <span class="site-title">Prog. Master Max</span>
+            </div>
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link">Início</a>
+
+                <!-- DROPDOWN -->
+                <div class="dropdown" id="langDropdown">
+                    <div class="nav-link" id="langBtn">
+                        Linguagens <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem; transition: 0.3s;"></i>
+                    </div>
+                    <div class="dropdown-menu">
+                        <div class="menu-column">
+                            <a href="HTML.html" class="menu-item"><i class="fa-brands fa-html5"></i> HTML</a>
+                            <a href="CSS.html" class="menu-item"><i class="fa-brands fa-css3-alt"></i> CSS</a>
+                            <a href="JavaScript.html" class="menu-item"><i class="fa-brands fa-js"></i> JavaScript</a>
+                            <a href="#" class="menu-item"><i class="fa-brands fa-react"></i> React</a>
+                            <a href="cpp.html" class="menu-item"><i class="fa-brands fa-code"></i> C++</a>
+                        </div>
+                        <div class="menu-column">
+                            <a href="java.html" class="menu-item"><i class="fa-brands fa-java"></i> Java</a>
+                            <a href="python.html" class="menu-item"><i class="fa-brands fa-python"></i> Python</a>
+                            <a href="php.html" class="menu-item"><i class="fa-brands fa-php"></i> PHP</a>
+                            <a href="c.html" class="menu-item"><i class="fa-solid fa-code"></i> C#</a>
+                        </div>
+                        <div class="menu-column">
+                            <a href="#" class="menu-item"><i class="fa-brands fa-rust"></i> Rust</a>
+                            <a href="swift.html" class="menu-item"><i class="fa-brands fa-swift"></i> Swift</a>
+                            <a href="ruby.html" class="menu-item"><i class="fa-solid fa-gem"></i> Ruby</a>
+                            <a href="go.html" class="menu-item"><i class="fa-solid fa-terminal"></i> Go</a>
+                        </div>
+                    </div>
+                </div>
+                <a href="curiosidades.html" class="nav-link active">Curiosidades</a>
+                <a href="tutoriais.html" class="nav-link">Tutoriais</a>
+                <a href="sobre.html" class="nav-link">Sobre</a>
+            </nav>
+            <div class="header-actions">
+                <a href="login.html" class="nav-link active">Login</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="barra-lateral">
+        <button class="botao-flutuante" onclick="window.location.href='loading.html?target=' + document.referrer.split('/').pop() || 'index.html'" title="Voltar">Voltar</button>
+
+        <button class="barra-toggle" id="barraToggle">||||||</button>
+        <br><br>
+
+        <!-- Filtro por Categoria -->
+        <div class="filtro-dropdown" id="filtroDropdown">
+            <button class="filtro-btn" onclick="toggleFiltro('filtroDropdown')">
+                <i class="fas fa-filter"></i>
+                <span style="margin-left: 5px;">Filtrar Categoria</span>
+                <i class="fas fa-chevron-down" style="margin-left: auto;"></i>
+            </button>
+            <div class="filtro-menu">
+                <button class="filtro-item ativo" onclick="filtrarNoticias('todas')">
+                    <i class="fas fa-globe" style="margin-right: 8px;"></i>Todas
+                </button>
+                <button class="filtro-item" onclick="filtrarNoticias('programacao')">
+                    <i class="fas fa-code" style="margin-right: 8px;"></i>Programação
+                </button>
+                <button class="filtro-item" onclick="filtrarNoticias('web')">
+                    <i class="fas fa-globe" style="margin-right: 8px;"></i>Web
+                </button>
+                <button class="filtro-item" onclick="filtrarNoticias('empresas')">
+                    <i class="fas fa-building" style="margin-right: 8px;"></i>Empresas
+                </button>
+                <button class="filtro-item" onclick="filtrarNoticias('ia')">
+                    <i class="fas fa-brain" style="margin-right: 8px;"></i>IA & ML
+                </button>
+            </div>
+        </div>
+
+        <!-- Filtro por Data -->
+        <div class="filtro-dropdown" id="filtroDataDropdown">
+            <button class="filtro-btn" onclick="toggleFiltro('filtroDataDropdown')">
+                <i class="fas fa-calendar-alt"></i>
+                <span style="margin-left: 5px;">Filtrar por Data</span>
+                <i class="fas fa-chevron-down" style="margin-left: auto;"></i>
+            </button>
+            <div class="filtro-menu">
+                <button class="filtro-item ativo" onclick="ordenarNoticias('recente')">
+                    <i class="fas fa-sort-amount-down" style="margin-right: 8px;"></i>Mais Recentes
+                </button>
+                <button class="filtro-item" onclick="ordenarNoticias('antigo')">
+                    <i class="fas fa-sort-amount-up" style="margin-right: 8px;"></i>Mais Antigos
+                </button>
+                <div class="data-input-container">
+                    <label style="font-size: 0.8rem; display: block; margin-bottom: 5px;">Data Específica:</label>
+                    <input type="date" id="inputDataEspecifica" onchange="filtrarPorDataEspecifica(this.value)">
+                </div>
+            </div>
+        </div>
+
+        <!-- Cartão de Curiosidades -->
+        <div class="cartao">
+            <img src="img/html_transparent.png" alt="Curiosidades" class="cartao-icone">
+            <h2><span class="curiosidades-icon"><i class="fas fa-lightbulb"></i></span>Curiosidades</h2>
+            <ul>
+                <li>Tecnologia e Inovação</li>
+                <li>Programação</li>
+                <li>Empresas de Tech</li>
+                <li>Desenvolvimento Web</li>
+                <li>Notícias do Setor</li>
+            </ul>
+
+            <a href="curiosidades.html" class="botao">Explorar</a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="conteudo-principal">
+        <h1>Curiosidades e Notícias de Tecnologia</h1>
+
+        <!-- Grid de Notícias -->
+        <section class="explicacao">
+            <h2 id="titulo-grid">Todas as Notícias</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;" id="gridNoticias">
+                <!-- As notícias serão inseridas aqui pelo JavaScript -->
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="explicacao" style="background: linear-gradient(135deg, var(--accent-color) 0%, #764ba2 100%); color: white; text-align: center; padding: 40px;">
+            <h2 style="color: white; margin-bottom: 15px;">Fique por Dentro das Novidades de Tech</h2>
+            <p style="color: rgba(255,255,255,0.9); margin-bottom: 20px;">Receba as curiosidades e notícias mais interessantes sobre tecnologia e programação</p>
+            <form style="display: flex; gap: 10px; max-width: 500px; margin: 0 auto; flex-wrap: wrap; justify-content: center;" onsubmit="inscreverNewsletter(event)">
+                <input type="email" placeholder="seu@email.com" required style="flex: 1; min-width: 250px; padding: 12px 15px; border: none; border-radius: 5px; font-size: 1rem;">
+                <button type="submit" class="botao" style="background: white; color: var(--accent-color); border: none;">Inscrever</button>
+            </form>
+        </section>
+
+        <!-- Footer -->
+        <footer class="rodape">
+            <p>© 2025 Prog. Master Max - Curiosidades e Notícias de Tecnologia</p>
+            <p>Desenvolvido com 💜 pelos estudantes de desenvolvimento web</p>
+            <div class="redes-sociais">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Toggle Switch de Tema -->
+    <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider round">
+                <i class="fa-solid fa-sun icon-sun"></i>
+                <i class="fa-solid fa-moon icon-moon"></i>
+            </div>
+        </label>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Dados das notícias - APENAS TECNOLOGIA
+        // Nota: As datas foram convertidas internamente para facilitar a ordenação
+        const noticias = [{
+            id: 1,
+            titulo: "Inteligência Artificial Revoluciona o Desenvolvimento Web",
+            descricao: "Ferramentas de IA como GitHub Copilot e ChatGPT transformam a forma como programadores escrevem código. Produtividade aumenta em até 40%.",
+            categoria: "ia",
+            data: "26 de março de 2026",
+            dataISO: "2026-03-26",
+            tempo: "4 min"
+        }, {
+            id: 2,
+            titulo: "React 19 Lança Novas Features Revolucionárias",
+            descricao: "A nova versão do React traz melhorias significativas em performance e uma API simplificada para gerenciamento de estado.",
+            categoria: "web",
+            data: "25 de março de 2026",
+            dataISO: "2026-03-25",
+            tempo: "5 min"
+        }, {
+            id: 3,
+            titulo: "Google Adquire Startup de Machine Learning por $2 Bilhões",
+            descricao: "A gigante da tecnologia investe pesadamente em IA. Entenda o impacto dessa aquisição no mercado de tech.",
+            categoria: "empresas",
+            data: "24 de março de 2026",
+            dataISO: "2026-03-24",
+            tempo: "6 min"
+        }, {
+            id: 4,
+            titulo: "Python Continua Sendo a Linguagem Mais Usada em 2026",
+            descricao: "Pesquisa mostra que Python mantém a liderança entre desenvolvedores. Confira o ranking completo das linguagens.",
+            categoria: "programacao",
+            data: "23 de março de 2026",
+            dataISO: "2026-03-23",
+            tempo: "4 min"
+        }, {
+            id: 5,
+            titulo: "TypeScript Atinge 10 Milhões de Downloads Mensais",
+            descricao: "A linguagem que adiciona tipagem ao JavaScript continua crescendo em popularidade entre desenvolvedores.",
+            categoria: "programacao",
+            data: "22 de março de 2026",
+            dataISO: "2026-03-22",
+            tempo: "3 min"
+        }, {
+            id: 6,
+            titulo: "Microsserviços vs Monolitos: Qual Escolher em 2026?",
+            descricao: "Análise profunda sobre as vantagens e desvantagens de cada arquitetura para aplicações modernas.",
+            categoria: "web",
+            data: "21 de março de 2026",
+            dataISO: "2026-03-21",
+            tempo: "7 min"
+        }, {
+            id: 7,
+            titulo: "Segurança em APIs: Os Maiores Riscos em 2026",
+            descricao: "Especialistas alertam sobre vulnerabilidades críticas em APIs. Saiba como proteger suas aplicações.",
+            categoria: "programacao",
+            data: "20 de março de 2026",
+            dataISO: "2026-03-20",
+            tempo: "5 min"
+        }, {
+            id: 8,
+            titulo: "Meta Investe Bilhões em Infraestrutura de IA",
+            descricao: "A empresa anunciou um plano ambicioso para construir data centers especializados em inteligência artificial.",
+            categoria: "empresas",
+            data: "19 de março de 2026",
+            dataISO: "2026-03-19",
+            tempo: "4 min"
+        }, {
+            id: 9,
+            titulo: "WebAssembly Ganha Suporte em Todos os Navegadores",
+            descricao: "Tecnologia que permite executar código compilado no navegador agora é universalmente suportada.",
+            categoria: "web",
+            data: "18 de março de 2026",
+            dataISO: "2026-03-18",
+            tempo: "4 min"
+        }];
+
+        let categoriaAtiva = 'todas';
+        let ordemAtiva = 'recente';
+        let dataEspecificaAtiva = null;
+
+        function renderizarNoticias(noticiasParaMostrar) {
+            const grid = document.getElementById('gridNoticias');
+            grid.innerHTML = '';
+
+            if (noticiasParaMostrar.length === 0) {
+                grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 20px;">Nenhuma notícia encontrada para os filtros selecionados.</p>';
+                return;
+            }
+
+            noticiasParaMostrar.forEach(noticia => {
+                const card = document.createElement('div');
+                card.className = 'cartao';
+                card.style.display = 'flex';
+                card.style.flexDirection = 'column';
+                card.innerHTML = `
+                    <img src="" alt="${noticia.titulo}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 15px;">
+                    <span style="display: inline-block; background: var(--accent-color); color: white; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; margin-bottom: 10px; width: fit-content;">
+                        ${getCategoriaLabel(noticia.categoria)}
+                    </span>
+                    <h3 style="margin-bottom: 10px; margin-top: 0;">${noticia.titulo}</h3>
+                    <p style="flex-grow: 1; margin-bottom: 15px; color: var(--text-color); font-size: 0.95rem; line-height: 1.5;">${noticia.descricao}</p>
+                    <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color, #ddd); padding-top: 10px;">
+                        <span style="font-size: 0.85rem; color: var(--text-color);">${noticia.data} • ${noticia.tempo}</span>
+                        <button class="botao" style="margin-top: 0; padding: 5px 15px; font-size: 0.9rem;">Ler →</button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function getCategoriaLabel(categoria) {
+            const labels = {
+                'todas': 'Todas',
+                'programacao': 'Programação',
+                'web': 'Web',
+                'empresas': 'Empresas',
+                'ia': 'IA & ML'
+            };
+            return labels[categoria] || categoria;
+        }
+
+        function aplicarFiltros() {
+            let filtradas = [...noticias];
+
+            // Filtro por Categoria
+            if (categoriaAtiva !== 'todas') {
+                filtradas = filtradas.filter(n => n.categoria === categoriaAtiva);
+            }
+
+            // Filtro por Data Específica
+            if (dataEspecificaAtiva) {
+                filtradas = filtradas.filter(n => n.dataISO === dataEspecificaAtiva);
+            }
+
+            // Ordenação
+            filtradas.sort((a, b) => {
+                const dataA = new Date(a.dataISO);
+                const dataB = new Date(b.dataISO);
+                return ordemAtiva === 'recente' ? dataB - dataA : dataA - dataB;
+            });
+
+            renderizarNoticias(filtradas);
+        }
+
+        function filtrarNoticias(categoria) {
+            categoriaAtiva = categoria;
+
+            // Atualizar botões do menu de categoria
+            document.querySelectorAll('#filtroDropdown .filtro-item').forEach(btn => {
+                btn.classList.remove('ativo');
+            });
+            event.target.classList.add('ativo');
+
+            // Fechar menu
+            document.getElementById('filtroDropdown').classList.remove('ativo');
+
+            // Atualizar título
+            const titulos = {
+                'todas': 'Todas as Notícias de Tecnologia',
+                'programacao': 'Notícias de Programação',
+                'web': 'Notícias de Desenvolvimento Web',
+                'empresas': 'Notícias de Empresas de Tech',
+                'ia': 'Notícias de IA & Machine Learning'
+            };
+            document.getElementById('titulo-grid').textContent = titulos[categoria];
+
+            aplicarFiltros();
+        }
+
+        function ordenarNoticias(ordem) {
+            ordemAtiva = ordem;
+            dataEspecificaAtiva = null; // Limpa data específica ao escolher ordenação
+            document.getElementById('inputDataEspecifica').value = '';
+
+            // Atualizar botões do menu de data
+            document.querySelectorAll('#filtroDataDropdown .filtro-item').forEach(btn => {
+                btn.classList.remove('ativo');
+            });
+            event.target.classList.add('ativo');
+
+            // Fechar menu
+            document.getElementById('filtroDataDropdown').classList.remove('ativo');
+
+            aplicarFiltros();
+        }
+
+        function filtrarPorDataEspecifica(data) {
+            dataEspecificaAtiva = data;
+
+            // Remove ativo dos botões de ordenação
+            document.querySelectorAll('#filtroDataDropdown .filtro-item').forEach(btn => {
+                btn.classList.remove('ativo');
+            });
+
+            aplicarFiltros();
+        }
+
+        function toggleFiltro(id) {
+            const dropdown = document.getElementById(id);
+            // Fecha outros dropdowns
+            document.querySelectorAll('.filtro-dropdown').forEach(d => {
+                if (d.id !== id) d.classList.remove('ativo');
+            });
+            dropdown.classList.toggle('ativo');
+        }
+
+        function inscreverNewsletter(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('input[type="email"]').value;
+            alert(`Obrigado por se inscrever com: ${email}`);
+            event.target.reset();
+        }
+
+        // Fechar menus ao clicar fora
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.filtro-dropdown')) {
+                document.querySelectorAll('.filtro-dropdown').forEach(d => {
+                    d.classList.remove('ativo');
+                });
+            }
+        });
+
+        // Renderizar notícias ao carregar a página
+        document.addEventListener('DOMContentLoaded', () => {
+            aplicarFiltros();
+        });
+    </script>
+</body>
+
+</html>

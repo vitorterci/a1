@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Master - Do Básico ao Avançado</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Open+Sans&display=swap" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+
+<body>
+ <!-- Adicione isso logo após a abertura do <body> e antes do <aside> -->
+    <header class="site-header">
+        <div class="header-container">
+          <div class="logo-container">
+            <img src="img/logo.png" alt="Prog. Master Max" class="logo">
+            <span class="site-title">Prog. Master Max</span>
+          </div>
+          <nav class="main-nav">
+                <a href="loading.html?target=index.html" class="nav-link ">Início</a>
+
+                <!-- DROPDOWN CORRIGIDO -->
+                <div class="dropdown" id="langDropdown">
+                    <div class="nav-link" id="langBtn">
+                        Linguagens <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem; transition: 0.3s;"></i>
+                    </div>
+                    <div class="dropdown-menu">
+                        <div class="menu-column">
+                            <a href="loading.html?target=HTML.html" class="menu-item"><i class="fa-brands fa-html5"></i> HTML</a>
+                            <a href="loading.html?target=CSS.html" class="menu-item"><i class="fa-brands fa-css3-alt"></i> CSS</a>
+                            <a href="loading.html?target=JavaScript.html" class="menu-item"><i class="fa-brands fa-js"></i> JavaScript</a>
+                            <a href="#" class="menu-item"><i class="fa-brands fa-react"></i> React</a>
+                        </div>
+                        <div class="menu-column">
+                            <a href="loading.html?target=java.html" class="menu-item"><i class="fa-brands fa-java"></i> Java</a>
+                            <a href="#" class="menu-item"><i class="fa-brands fa-python"></i> Python</a>
+                            <a href="#" class="menu-item"><i class="fa-brands fa-php"></i> PHP</a>
+                            <a href="#" class="menu-item"><i class="fa-solid fa-code"></i> C#</a>
+                        </div>
+                        <div class="menu-column">
+                            <a href="#" class="menu-item"><i class="fa-brands fa-rust"></i> Rust</a>
+                            <a href="#" class="menu-item"><i class="fa-brands fa-swift"></i> Swift</a>
+                            <a href="#" class="menu-item"><i class="fa-solid fa-gem"></i> Ruby</a>
+                            <a href="#" class="menu-item"><i class="fa-solid fa-terminal"></i> Go</a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#" class="nav-link">Sobre</a>
+            </nav>
+          <div class="header-actions">
+            <a href="login.html" class="nav-link active">Login</a>
+          </div>
+        </div>
+      </header>
+      
+  <aside class="barra-lateral">
+    <button class="botao-flutuante" onclick="window.location.href='loading.html?target=' + document.referrer.split('/').pop() || 'index.html'" title="Voltar">Voltar</button>
+    <button class="barra-toggle" id="barraToggle">||||||</button>
+    <br>
+    
+    <div class="cartao">
+      <h2>Índice JavaScript</h2>
+      <ul>
+        <li>Introdução ao JavaScript</li>
+        <li>Sintaxe Básica</li>
+        <li>Manipulação do DOM</li>
+        <li>Eventos</li>
+        <li>Funções</li>
+        <li>Objetos e Arrays</li>
+        <li>ES6+ Features</li>
+        <li>Async/Await</li>
+        <li>Projeto Final</li>
+      </ul>
+      <a href="#" class="botao">Baixar Guia</a>
+    </div>
+
+    <div class="cartao">
+      <h2>Recursos Úteis</h2>
+      <ul>
+        <li>MDN Web Docs</li>
+        <li>JavaScript.info</li>
+        <li>Console do Navegador</li>
+        <li>Stack Overflow</li>
+        <li>Cheat Sheets</li>
+      </ul>
+      <a href="#" class="botao">Acessar Links</a>
+    </div>
+  
+
+    <div class="cartao">
+      <img src="img/html_transparent.png" alt="HTML" class="cartao-icone">
+      <h2>HTML</h2>
+      <ul>
+        <li>O que é HTML?</li>
+        <li>Como funciona?</li>
+        <li>Estrutura básica</li>
+        <li>Principais tags</li>
+        <li>Exemplos de códigos</li>
+      </ul>
+      <a href="HTML.html" class="botao">Acessar HTML</a>
+    </div>
+
+    <div class="cartao">
+      <img src="img/css_transparent.png" alt="CSS" class="cartao-icone">
+      <h2>CSS</h2>
+      <ul>
+        <li>O que é CSS?</li>
+        <li>Sintaxe básica</li>
+        <li>Formas de aplicação</li>
+        <li>Seletores</li>
+        <li>Box Model</li>
+        <li>Estilos e layouts básicos</li>
+      </ul>
+      <a href="CSS.html" class="botao">Acessar CSS</a>
+    </div>
+
+    <div class="cartao">
+      <img src="img/js_logo.png" alt="JavaScript" class="cartao-icone">
+      <h2>JAVASCRIPT</h2>
+      <ul>
+        <li>Introdução ao JavaScript</li>
+        <li>Configuração do Ambiente</li>
+        <li>Sintaxe Básica</li>
+        <li>Manipulação do DOM</li>
+        <li>Eventos</li>
+        <li>Funções</li>
+        <li>Objetos e Arrays</li>
+      </ul>
+      <a href="JavaScript.html" class="botao">Acessar JavaScript </a>
+    </div>
+
+    <div class="cartao">
+        <img src="img/java_logo.png" alt="Java" class="cartao-icone">
+        <h2>JAVA</h2>
+        <ul>
+          <li>Introdução ao Java</li>
+          <li>Configuração do Ambiente</li>
+          <li>Sintaxe Básica</li>
+          <li>Estruturas de Controle</li>
+          <li>Orientação a Objetos</li>
+          <li>Coleções e Generics</li>
+          <li>Tratamento de Exceções</li>
+        </ul>
+        <a href="java.html" class="botao">Acessar JAVA</a>
+      </div>
+  </aside>
+  
+  <main class="conteudo-principal">
+    <h1>JavaScript Master - Do Zero ao Avançado</h1>
+
+    <div class="conteiner-conteudo">
+      <div class="conteudo">
+        <div class="explicacao">
+          <div class="introducao">
+            <h3>Aprenda JavaScript de forma completa, desde os fundamentos até técnicas avançadas</h3>
+            <h3>Domine a linguagem que dá vida à web com exemplos práticos e projetos reais</h3>
+            <h3>Desenvolvido para quem quer se tornar um desenvolvedor web profissional</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="conteudo">
+        <img src="img/js_logo.png" alt="Logo JavaScript" style="width: 400px; border-radius: 10px;">
+      </div>
+    </div>
+
+    <section class="explicacao">
+      <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+        <div>
+          <h2 class="titulo">O que é JavaScript?</h2>
+          <p>JavaScript é uma linguagem de programação de alto nível, interpretada e multiparadigma, utilizada principalmente para adicionar interatividade às páginas web.</p>
+          
+          <p><strong>Características principais:</strong></p>
+          <ul>
+            <li><strong>Linguagem de script:</strong> Executada no lado do cliente (navegador)</li>
+            <li><strong>Multiparadigma:</strong> Suporta programação funcional, orientada a objetos e imperativa</li>
+            <li><strong>Ecossistema rico:</strong> NPM, frameworks e bibliotecas poderosas</li>
+            <li><strong>Universal:</strong> Funciona em todos os navegadores modernos e no servidor (Node.js)</li>
+          </ul>
+          
+          <p>O JavaScript trabalha em conjunto com HTML (estrutura) e CSS (estilo), formando a tríade fundamental do desenvolvimento web front-end.</p>
+        </div>
+        <img src="img/js_logo.png" alt="JavaScript no navegador" style="width: 300px; border-radius: 10px;">
+      </div>
+    </section>
+
+    <section class="explicacao">
+      <h2>Configurando o Ambiente</h2>
+      <p>Para começar a programar em JavaScript, você precisa de poucas ferramentas básicas.</p>
+      
+      <div class="secoes">
+        <div class="secao">
+          <h3>Editores de Código</h3>
+          <ul>
+            <li><strong>VS Code:</strong> Leve, poderoso e com muitas extensões</li>
+            <li><strong>Sublime Text:</strong> Rápido e minimalista</li>
+            <li><strong>Atom:</strong> Open source e altamente customizável</li>
+            <li><strong>WebStorm:</strong> IDE completa para JavaScript</li>
+          </ul>
+        </div>
+        
+        <div class="secao">
+          <h3>Ferramentas Essenciais</h3>
+          <ul>
+            <li><strong>Node.js:</strong> Ambiente de execução JavaScript</li>
+            <li><strong>NPM/Yarn:</strong> Gerenciadores de pacotes</li>
+            <li><strong>Git:</strong> Controle de versão</li>
+            <li><strong>Chrome DevTools:</strong> Debugging e análise</li>
+          </ul>
+        </div>
+      </div>
+      
+      <h3>Primeiro Código JavaScript</h3>
+      <p>Você pode incluir JavaScript em uma página HTML de três formas:</p>
+      
+      <div class="tabs">
+        <div class="tab active" onclick="openTab(event, 'inline')">Inline</div>
+        <div class="tab" onclick="openTab(event, 'interno')">Interno</div>
+        <div class="tab" onclick="openTab(event, 'externo')">Externo</div>
+      </div>
+      
+      <div id="inline" class="tab-content active">
+        <pre><code>
+&lt;button onclick="alert('Olá Mundo!')"&gt;Clique Aqui&lt;/button&gt;
+        </code></pre>
+        <p>JavaScript diretamente no atributo HTML (não recomendado para códigos complexos).</p>
+      </div>
+      
+      <div id="interno" class="tab-content">
+        <pre><code>
+&lt;script&gt;
+  document.addEventListener('DOMContentLoaded', function() {
+    console.log('Página carregada!');
+  });
+&lt;/script&gt;
+        </code></pre>
+        <p>Script embutido na página HTML usando a tag &lt;script&gt;.</p>
+      </div>
+      
+      <div id="externo" class="tab-content">
+        <pre><code>
+&lt;script src="scripts.js" defer&gt;&lt;/script&gt;
+        </code></pre>
+        <p>Arquivo externo vinculado à página HTML (melhor prática para organização).</p>
+      </div>
+    </section>
+
+    <section class="explicacao">
+      <h2>Sintaxe Básica</h2>
+      <p>JavaScript possui uma sintaxe similar a outras linguagens como C, Java e C#.</p>
+      
+      <div class="secoes">
+        <div class="secao">
+          <h3>Variáveis e Tipos</h3>
+          <pre><code>
+// Declaração de variáveis (ES6+)
+let nome = 'João'; // String
+const idade = 30;  // Number (constante)
+var antigo = true; // Boolean (modo antigo)
+
+// Tipos de dados
+let texto = "Texto";       // String
+let numero = 42;           // Number
+let booleano = false;      // Boolean
+let nulo = null;           // Null
+let indefinido;            // Undefined
+let objeto = {             // Object
+  chave: 'valor'
+};
+let array = [1, 'dois'];   // Array
+let funcao = function() {}; // Function
+          </code></pre>
+        </div>
+        
+        <div class="secao">
+          <h3>Operadores</h3>
+          <pre><code>
+// Aritméticos
+let soma = 10 + 5;    // 15
+let subtracao = 10 - 5; // 5
+let multiplicacao = 10 * 5; // 50
+let divisao = 10 / 5;  // 2
+let modulo = 10 % 3;   // 1 (resto da divisão)
+
+// Comparação
+let igual = 5 == '5';  // true (valor igual)
+let estritamenteIgual = 5 === '5'; // false (valor e tipo)
+let diferente = 5 != '5'; // false
+let maiorQue = 10 > 5; // true
+
+// Lógicos
+let e = true && false; // false
+let ou = true || false; // true
+let nao = !true;       // false
+          </code></pre>
+        </div>
+      </div>
+      
+      <h3>Estruturas de Controle</h3>
+      
+      <div class="secoes">
+        <div class="secao">
+          <h4>Condicionais</h4>
+          <pre><code>
+// if-else
+if (idade >= 18) {
+  console.log('Maior de idade');
+} else {
+  console.log('Menor de idade');
+}
+
+// switch-case
+switch(diaDaSemana) {
+  case 0:
+    console.log('Domingo');
+    break;
+  case 1:
+    console.log('Segunda');
+    break;
+  default:
+    console.log('Outro dia');
+}
+          </code></pre>
+        </div>
+        
+        <div class="secao">
+          <h4>Loops</h4>
+          <pre><code>
+// for loop
+for (let i = 0; i < 5; i++) {
+  console.log(i);
+}
+
+// while
+let i = 0;
+while (i < 5) {
+  console.log(i);
+  i++;
+}
+
+// for...of (arrays)
+for (let item of array) {
+  console.log(item);
+}
+
+// for...in (objetos)
+for (let chave in objeto) {
+  console.log(chave, objeto[chave]);
+}
+          </code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="explicacao">
+      <h2>Funções</h2>
+      <p>Funções são blocos de código reutilizáveis que realizam uma tarefa específica.</p>
+      
+      <div class="secoes">
+        <div class="secao">
+          <h3>Declaração de Funções</h3>
+          <pre><code>
+// Declaração de função
+function saudacao(nome) {
+  return `Olá, ${nome}!`;
+}
+
+// Expressão de função
+const soma = function(a, b) {
+  return a + b;
+};
+
+// Arrow function (ES6+)
+const quadrado = x => x * x;
+
+// Parâmetros padrão
+function multiplicar(a, b = 1) {
+  return a * b;
+}
+          </code></pre>
+        </div>
+        
+        <div class="secao">
+          <h3>Recursos Avançados</h3>
+          <pre><code>
+// Funções de alta ordem
+function operacao(a, b, funcao) {
+  return funcao(a, b);
+}
+
+operacao(5, 3, (x, y) => x + y); // 8
+
+// Closure
+function contador() {
+  let count = 0;
+  return function() {
+    return ++count;
+  };
+}
+
+const incrementar = contador();
+incrementar(); // 1
+incrementar(); // 2
+          </code></pre>
+        </div>
+      </div>
+      
+      <h3>Escopo e Hoisting</h3>
+      <pre><code>
+// Escopo global
+let global = 'acessível em qualquer lugar';
+
+function testeEscopo() {
+  // Escopo de função
+  let funcao = 'acessível apenas aqui';
+  
+  if (true) {
+    // Escopo de bloco (let/const)
+    let bloco = 'apenas neste bloco';
+    var antigo = 'vaza para a função'; // var não tem escopo de bloco
+  }
+}
+
+// Hoisting - declarações são movidas para o topo
+console.log(x); // undefined (var)
+var x = 5;
+console.log(y); // ReferenceError (let/const)
+let y = 10;
+      </code></pre>
+    </section>
+
+    <section class="explicacao">
+      <h2>Objetos e Arrays</h2>
+      <p>Objetos e arrays são estruturas fundamentais para organizar dados em JavaScript.</p>
+      
+      <div class="secoes">
+        <div class="secao">
+          <h3>Objetos</h3>
+          <pre><code>
+// Criação de objeto
+const pessoa = {
+  nome: 'Maria',
+  idade: 25,
+  saudar: function() {
+    console.log(`Olá, meu nome é ${this.nome}`);
+  }
+};
+
+// Acesso a propriedades
+console.log(pessoa.nome); // Maria
+console.log(pessoa['idade']); // 25
+pessoa.saudar(); // Olá, meu nome é Maria
+
+// Adicionar/remover propriedades
+pessoa.profissao = 'Desenvolvedora';
+delete pessoa.idade;
+
+// Object destructuring (ES6+)
+const { nome, saudar } = pessoa;
+saudar(); // Olá, meu nome é Maria
+          </code></pre>
+        </div>
+        
+        <div class="secao">
+          <h3>Arrays</h3>
+          <pre><code>
+// Criação de array
+const frutas = ['maçã', 'banana', 'laranja'];
+
+// Acesso
+console.log(frutas[1]); // banana
+console.log(frutas.length); // 3
+
+// Métodos comuns
+frutas.push('uva'); // adiciona no final
+frutas.pop(); // remove do final
+frutas.unshift('morango'); // adiciona no início
+frutas.shift(); // remove do início
+
+// Array destructuring (ES6+)
+const [primeira, segunda] = frutas;
+console.log(primeira); // maçã
+
+// Métodos funcionais
+frutas.forEach(fruta => console.log(fruta));
+const maiusculas = frutas.map(f => f.toUpperCase());
+const filtradas = frutas.filter(f => f.length > 5);
+          </code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="explicacao">
+      <h2>Manipulação do DOM</h2>
+      <p>O DOM (Document Object Model) é a representação em objetos da estrutura HTML da página.</p>
+      
+      <div class="secoes">
+        <div class="secao">
+          <h3>Seleção de Elementos</h3>
+          <pre><code>
+// Métodos tradicionais
+document.getElementById('meuId');
+document.getElementsByClassName('minhaClasse');
+document.getElementsByTagName('div');
+
+// Métodos modernos (querySelector)
+document.querySelector('#meuId'); // seletor CSS
+document.querySelectorAll('.minhaClasse');
+
+// Exemplos práticos
+const botao = document.querySelector('button');
+const paragrafos = document.querySelectorAll('p');
+const formulario = document.forms['meuForm'];
+          </code></pre>
+        </div>
+        
+        <div class="secao">
+          <h3>Manipulação de Elementos</h3>
+          <pre><code>
+// Alterar conteúdo
+elemento.textContent = 'Novo texto';
+elemento.innerHTML = '&lt;strong&gt;Texto&lt;/strong&gt; formatado';
+
+// Atributos e classes
+elemento.setAttribute('data-info', 'valor');
+elemento.classList.add('nova-classe');
+elemento.classList.remove('classe-antiga');
+elemento.classList.toggle('ativa');
+
+// Estilos
+elemento.style.color = 'red';
+elemento.style.backgroundColor = '#f0f0f0';
+
+// Criar/remover elementos
+const novoElemento = document.createElement('div');
+document.body.appendChild(novoElemento);
+elementoPai.removeChild(elementoFilho);
+          </code></pre>
+        </div>
+      </div>
+      
+      <h3>Exemplo Prático</h3>
+      <pre><code>
+// HTML
+&lt;button id="botao"&gt;Clique Aqui&lt;/button&gt;
+&lt;div id="saida"&gt;&lt;/div&gt;
+
+// JavaScript
+const botao = document.getElementById('botao');
+const saida = document.getElementById('saida');
+
+botao.addEventListener('click', function() {
+  const novoParagrafo = document.createElement('p');
+  novoParagrafo.textContent = 'Botão clicado em: ' + new Date();
+  saida.appendChild(novoParagrafo);
+});
+      </code></pre>
+    </section>
+
+    <section class="explicacao">
+      <h2>Eventos</h2>
+      <p>Eventos são ações ou ocorrências que acontecem no navegador e podem ser detectadas pelo JavaScript.</p>
+      
+      <div class="secoes">
+        <div class="secao">
+          <h3>Tipos Comuns de Eventos</h3>
+          <ul>
+            <li><strong>Mouse:</strong> click, dblclick, mouseover, mouseout</li>
+            <li><strong>Teclado:</strong> keydown, keyup, keypress</li>
+            <li><strong>Formulário:</strong> submit, change, focus, blur</li>
+            <li><strong>Janela:</strong> load, resize, scroll</li>
+            <li><strong>Toque:</strong> touchstart, touchmove, touchend</li>
+          </ul>
+        </div>
+        
+        <div class="secao">
+          <h3>Manipulação de Eventos</h3>
+          <pre><code>
+// Método tradicional
+elemento.onclick = function() {
+  console.log('Clique 1');
+};
+
+// addEventListener (recomendado)
+elemento.addEventListener('click', function(event) {
+  console.log('Clique 2', event.target);
+});
+
+// Remover listener
+function handleClick() {
+  console.log('Clique 3');
+}
+elemento.addEventListener('click', handleClick);
+elemento.removeEventListener('click', handleClick);
+
+// Prevenir comportamento padrão
+formulario.addEventListener('submit', function(e) {
+  e.preventDefault();
+  // processar form manualmente
+});
+          </code></pre>
+        </div>
+      </div>
+      
+      <h3>Propagação de Eventos</h3>
+      <pre><code>
+// Bubbling (padrão) - do elemento filho para os pais
+// Capturing - dos pais para o elemento filho
+
+document.querySelector('div').addEventListener('click', function() {
+  console.log('Div clicada');
+}, true); // true para capturing phase
+
+document.querySelector('button').addEventListener('click', function(e) {
+  console.log('Botão clicado');
+  e.stopPropagation(); // impede a propagação
+});
+      </code></pre>
+    </section>
+
+    <section class="explicacao">
+      <h2>ES6+ Features</h2>
+      <p>ECMAScript 2015 (ES6) trouxe muitas melhorias para a linguagem JavaScript.</p>
+      
+      <div class="secoes">
+        <div class="secao">
+          <h3>Let e Const</h3>
+          <pre><code>
+// let - escopo de bloco
+let x = 10;
+if (true) {
+  let x = 20;
+  console.log(x); // 20
+}
+console.log(x); // 10
+
+// const - constante (valor não pode ser reatribuído)
+const PI = 3.1415;
+PI = 3; // TypeError
+          </code></pre>
+        </div>
+        
+        <div class="secao">
+          <h3>Template Strings</h3>
+          <pre><code>
+const nome = 'João';
+const idade = 30;
+
+// String tradicional
+console.log('Meu nome é ' + nome + ' e tenho ' + idade + ' anos.');
+
+// Template string
+console.log(`Meu nome é ${nome} e tenho ${idade} anos.`);
+
+// Multilinha
+const html = `
+  &lt;div&gt;
+    &lt;h1&gt;${nome}&lt;/h1&gt;
+    &lt;p&gt;Idade: ${idade}&lt;/p&gt;
+  &lt;/div&gt;
+`;
+          </code></pre>
+        </div>
+      </div>
+      
+      <div class="secoes" style="margin-top: 20px;">
+        <div class="secao">
+          <h3>Arrow Functions</h3>
+          <pre><code>
+// Sintaxe tradicional
+function soma(a, b) {
+  return a + b;
+}
+
+// Arrow function
+const soma = (a, b) => a + b;
+
+// Sem parênteses para um parâmetro
+const quadrado = x => x * x;
+
+// Com corpo e return
+const saudacao = nome => {
+  const mensagem = `Olá, ${nome}!`;
+  return mensagem;
+};
+
+// this léxico (não cria seu próprio this)
+const relogio = {
+  hora: 12,
+  mostrarHora: function() {
+    setInterval(() => {
+      console.log(this.hora); // this refere-se a relogio
+    }, 1000);
+  }
+};
+          </code></pre>
+        </div>
+        
+        <div class="secao">
+          <h3>Desestruturação</h3>
+          <pre><code>
+// Objetos
+const pessoa = { nome: 'Maria', idade: 25 };
+const { nome, idade } = pessoa;
+console.log(nome); // Maria
+
+// Arrays
+const numeros = [1, 2, 3];
+const [primeiro, segundo] = numeros;
+console.log(segundo); // 2
+
+// Parâmetros de função
+function mostrarDados({ nome, idade }) {
+  console.log(`${nome}, ${idade} anos`);
+}
+mostrarDados(pessoa); // Maria, 25 anos
+
+// Valores padrão
+const { cidade = 'Desconhecida' } = pessoa;
+console.log(cidade); // Desconhecida
+          </code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="explicacao">
+      <h2>Async/Await</h2>
+      <p>JavaScript é single-threaded, mas usa callbacks, promises e async/await para operações assíncronas.</p>
+      
+      <div class="secoes">
+        <div class="secao">
+          <h3>Callbacks</h3>
+          <pre><code>
+function buscarDados(callback) {
+  setTimeout(() => {
+    callback('Dados recebidos');
+  }, 1000);
+}
+
+buscarDados(function(dados) {
+  console.log(dados); // Depois de 1 segundo
+});
+
+// Problema: Callback Hell
+buscarUsuario(id, function(usuario) {
+  buscarPosts(usuario, function(posts) {
+    buscarComentarios(posts[0], function(comentarios) {
+      console.log(comentarios);
+    });
+  });
+});
+          </code></pre>
+        </div>
+        
+        <div class="secao">
+          <h3>Promises</h3>
+          <pre><code>
+function buscarDados() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('Dados recebidos');
+      // ou reject(new Error('Falha'));
+    }, 1000);
+  });
+}
+
+buscarDados()
+  .then(dados => console.log(dados))
+  .catch(erro => console.error(erro));
+
+// Encadeamento
+buscarUsuario(id)
+  .then(usuario => buscarPosts(usuario))
+  .then(posts => buscarComentarios(posts[0]))
+  .then(comentarios => console.log(comentarios))
+  .catch(erro => console.error(erro));
+          </code></pre>
+        </div>
+      </div>
+      
+      <h3>Async/Await (ES2017)</h3>
+      <pre><code>
+// Função assíncrona
+async function processarDados() {
+  try {
+    const dados = await buscarDados();
+    console.log(dados);
+    
+    const usuario = await buscarUsuario(dados.id);
+    const posts = await buscarPosts(usuario.id);
+    const comentarios = await buscarComentarios(posts[0].id);
+    
+    return comentarios;
+  } catch (erro) {
+    console.error('Erro:', erro);
+  }
+}
+
+// IIFE (Immediately Invoked Function Expression)
+(async () => {
+  const resultado = await processarDados();
+  console.log(resultado);
+})();
+      </code></pre>
+    </section>
+
+    <section class="explicacao">
+      <h2>Projeto Prático: To-Do List</h2>
+      <p>Vamos criar uma aplicação simples de lista de tarefas para praticar os conceitos aprendidos.</p>
+      
+      <h3>Estrutura do Projeto</h3>
+      <pre><code>
+todo-list/
+├── index.html
+├── css/
+│   └── estilo.css
+└── js/
+    └── app.js
+      </code></pre>
+      
+      <h3>Código do index.html</h3>
+      <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="pt-BR"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Lista de Tarefas&lt;/title&gt;
+  &lt;link rel="stylesheet" href="css/estilo.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="container"&gt;
+    &lt;h1&gt;Minha Lista de Tarefas&lt;/h1&gt;
+    
+    &lt;form id="formTarefa"&gt;
+      &lt;input type="text" id="inputTarefa" placeholder="Nova tarefa..." required&gt;
+      &lt;button type="submit"&gt;Adicionar&lt;/button&gt;
+    &lt;/form&gt;
+    
+    &lt;ul id="listaTarefas"&gt;&lt;/ul&gt;
+  &lt;/div&gt;
+  
+  &lt;script src="js/app.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+      </code></pre>
+      
+      <h3>Código do app.js</h3>
+      <pre><code>
+// Seleção de elementos
+const form = document.getElementById('formTarefa');
+const input = document.getElementById('inputTarefa');
+const lista = document.getElementById('listaTarefas');
+
+// Array para armazenar tarefas
+let tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
+
+// Função para salvar no localStorage
+function salvarTarefas() {
+  localStorage.setItem('tarefas', JSON.stringify(tarefas));
+}
+
+// Função para renderizar tarefas
+function renderizarTarefas() {
+  lista.innerHTML = '';
+  
+  tarefas.forEach((tarefa, index) => {
+    const li = document.createElement('li');
+    li.innerHTML = `
+      &lt;span class="${tarefa.concluida ? 'concluida' : ''}"&gt;${tarefa.texto}&lt;/span&gt;
+      &lt;div class="acoes"&gt;
+        &lt;button onclick="toggleConcluida(${index})"&gt;
+          ${tarefa.concluida ? 'Desfazer' : 'Concluir'}
+        &lt;/button&gt;
+        &lt;button onclick="removerTarefa(${index})"&gt;Remover&lt;/button&gt;
+      &lt;/div&gt;
+    `;
+    lista.appendChild(li);
+  });
+}
+
+// Adicionar nova tarefa
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  
+  const texto = input.value.trim();
+  if (texto) {
+    tarefas.push({ texto, concluida: false });
+    salvarTarefas();
+    renderizarTarefas();
+    input.value = '';
+    input.focus();
+  }
+});
+
+// Alternar status de conclusão
+function toggleConcluida(index) {
+  tarefas[index].concluida = !tarefas[index].concluida;
+  salvarTarefas();
+  renderizarTarefas();
+}
+
+// Remover tarefa
+function removerTarefa(index) {
+  tarefas.splice(index, 1);
+  salvarTarefas();
+  renderizarTarefas();
+}
+
+// Inicializar
+renderizarTarefas();
+      </code></pre>
+      
+      <h3>Desafios Adicionais</h3>
+      <ul>
+        <li>Adicionar data de criação para cada tarefa</li>
+        <li>Implementar filtros (todas/ativas/concluídas)</li>
+        <li>Adicionar animações quando tarefas são adicionadas/removidas</li>
+        <li>Permitir edição de tarefas existentes</li>
+        <li>Adicionar confirmação antes de remover tarefas</li>
+      </ul>
+      
+      <a href="#" class="botao">Baixar Código Completo</a>
+    </section>
+
+    <section class="explicacao">
+      <h2>Próximos Passos no Aprendizado</h2>
+      <p>Depois de dominar o JavaScript básico, você pode avançar para tópicos mais avançados.</p>
+      
+      <div class="secoes">
+        <div class="secao">
+          <h3>JavaScript Moderno (ES6+)</h3>
+          <ul>
+            <li>Módulos (import/export)</li>
+            <li>Classes e herança</li>
+            <li>Spread/Rest operators</li>
+            <li>Map, Set, WeakMap, WeakSet</li>
+            <li>Generators</li>
+            <li>Proxies e Reflect</li>
+          </ul>
+        </div>
+        
+        <div class="secao">
+          <h3>APIs do Navegador</h3>
+          <ul>
+            <li>Fetch API</li>
+            <li>Web Storage (localStorage/sessionStorage)</li>
+            <li>Geolocation API</li>
+            <li>Canvas API</li>
+            <li>Web Workers</li>
+            <li>Service Workers</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="secoes" style="margin-top: 20px;">
+        <div class="secao">
+          <h3>Frameworks Front-end</h3>
+          <ul>
+            <li>React.js</li>
+            <li>Vue.js</li>
+            <li>Angular</li>
+            <li>Svelte</li>
+            <li>Next.js/Nuxt.js</li>
+          </ul>
+        </div>
+        
+        <div class="secao">
+          <h3>Node.js e Backend</h3>
+          <ul>
+            <li>Express.js</li>
+            <li>RESTful APIs</li>
+            <li>GraphQL</li>
+            <li>Autenticação (JWT, OAuth)</li>
+            <li>WebSockets</li>
+            <li>Bancos de dados (MongoDB, PostgreSQL)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    
+    <footer class="rodape">
+      <p>© 2025 JavaScript Master - Todos os direitos reservados</p>
+      <p>Desenvolvido com 💜 pelos estudantes de desenvolvimento web (e IA)</p>
+      <div class="redes-sociais">
+        <a href="#"><img src="github-icon.png" alt="GitHub"></a>
+        <a href="#"><img src="linkedin-icon.png" alt="LinkedIn"></a>
+        <a href="#"><img src="twitter-icon.png" alt="Twitter"></a>
+      </div>
+      <div>
+        <h4> usado para auxilio</h4>
+        <a href="https://flexboxlabs.netlify.app/"><img src="" alt="Flexbox Labs"></a>
+        <a href="https://chat.deepseek.com/"><img src="" alt="Deepseek"></a>
+      </div>
+    </footer>
+  </main>
+
+      <!-- Toggle Switch de Tema Estético -->
+    <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider round">
+                <i class="fa-solid fa-sun icon-sun"></i>
+                <i class="fa-solid fa-moon icon-moon"></i>
+            </div>
+        </label>
+    </div>
+
+  <script src="script.js"></script>
+  
+</body>
+</html>

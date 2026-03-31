@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <title>Go Master - Do Básico ao Avançado</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="img/logo.png" alt="Logo" class="logo">
+                </a>
+                <span class="site-title">Prog. Master Max</span>
+            </div>
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link active">Início</a>
+
+                <!-- DROPDOWN CORRIGIDO -->
+                <div class="dropdown" id="langDropdown">
+                    <div class="nav-link" id="langBtn">
+                        Linguagens <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem; transition: 0.3s;"></i>
+                    </div>
+                    <div class="dropdown-menu">
+                        <div class="menu-column">
+                            <a href="HTML.html" class="menu-item"><i class="fa-brands fa-html5"></i> HTML</a>
+                            <a href="CSS.html" class="menu-item"><i class="fa-brands fa-css3-alt"></i> CSS</a>
+                            <a href="JavaScript.html" class="menu-item"><i class="fa-brands fa-js"></i> JavaScript</a>
+                            <a href="#" class="menu-item"><i class="fa-brands fa-react"></i> React</a>
+                            <a href="cpp.html" class="menu-item"><i class="fa-brands fa-code"></i> C++</a>
+                        </div>
+                        <div class="menu-column">
+                            <a href="java.html" class="menu-item"><i class="fa-brands fa-java"></i> Java</a>
+                            <a href="python.html" class="menu-item"><i class="fa-brands fa-python"></i> Python</a>
+                            <a href="php.html" class="menu-item"><i class="fa-brands fa-php"></i> PHP</a>
+                            <a href="c.html" class="menu-item"><i class="fa-solid fa-code"></i> C#</a>
+                        </div>
+                        <div class="menu-column">
+                            <a href="#" class="menu-item"><i class="fa-brands fa-rust"></i> Rust</a>
+                            <a href="swift.html" class="menu-item"><i class="fa-brands fa-swift"></i> Swift</a>
+                            <a href="ruby.html" class="menu-item"><i class="fa-solid fa-gem"></i> Ruby</a>
+                            <a href="go.html" class="menu-item"><i class="fa-solid fa-terminal"></i> Go</a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="sobre.html" class="nav-link">Sobre</a>
+            </nav>
+            <div class="header-actions">
+                <a href="login.html" class="nav-link active">Login</a>
+            </div>
+        </div>
+    </header>
+
+    <aside class="barra-lateral">
+        <button class="botao-flutuante" onclick="window.location.href='loading.html?target=' + document.referrer.split('/').pop() || 'index.html'" title="Voltar">Voltar</button>
+        <button class="barra-toggle" id="barraToggle">||||||</button>
+
+        <div class="cartao">
+            <h2>Índice Go</h2>
+            <ul>
+                <li>Introdução ao Go</li>
+                <li>Configuração do Ambiente</li>
+                <li>Sintaxe Básica</li>
+                <li>Goroutines</li>
+                <li>Channels</li>
+                <li>Interfaces</li>
+                <li>Desenvolvimento de APIs</li>
+                <li>Projeto Final</li>
+            </ul>
+            <a href="#" class="botao">Baixar Guia</a>
+        </div>
+
+        <div class="cartao">
+            <h2>Recursos Úteis</h2>
+            <ul>
+                <li>Documentação Oficial</li>
+                <li>Go Playground</li>
+                <li>Go Modules</li>
+                <li>Comunidade Go</li>
+                <li>Cheat Sheets</li>
+            </ul>
+            <a href="#" class="botao">Acessar Links</a>
+        </div>
+
+        <div class="cartao">
+            <img src="img/go_logo.png" alt="Go" class="cartao-icone">
+            <h2>GO</h2>
+            <ul>
+                <li>O que é Go?</li>
+                <li>Simplicidade</li>
+                <li>Concorrência</li>
+                <li>Performance</li>
+                <li>Comunidade</li>
+            </ul>
+            <a href="go.html" class="botao">Acessar GO</a>
+        </div>
+    </aside>
+
+    <main class="conteudo-principal">
+        <h1>Go Master - Do Zero ao Avançado</h1>
+
+        <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+            <div style="flex: 2;">
+                <div class="explicacao">
+                    <div>
+                        <h3>Aprenda Go, a linguagem moderna do Google</h3>
+                        <h3>Domine programação concorrente com simplicidade e eficiência</h3>
+                        <h3>Desenvolvido para quem busca performance e escalabilidade</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div style="flex: 1; text-align: center;">
+                <img src="img/go_logo.png" alt="Logo Go" style="width: 200px;">
+            </div>
+        </div>
+
+        <section class="explicacao">
+            <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+                <div>
+                    <h2 class="titulo">O que é Go?</h2>
+                    <p>Go (Golang) é uma linguagem de programação compilada, criada pelo Google em 2009. É projetada para ser simples, eficiente e ideal para programação concorrente e sistemas distribuídos.</p>
+
+                    <p><strong>Características principais:</strong></p>
+                    <ul>
+                        <li><strong>Simples:</strong> Sintaxe clara e minimalista</li>
+                        <li><strong>Rápida:</strong> Compila para código nativo muito rápido</li>
+                        <li><strong>Concorrência:</strong> Goroutines e channels para concorrência fácil</li>
+                        <li><strong>Multiplataforma:</strong> Compila para Windows, Linux, macOS</li>
+                        <li><strong>Biblioteca Padrão Poderosa:</strong> Inclui tudo que você precisa</li>
+                    </ul>
+
+                    <p>Go é usado em Docker, Kubernetes, Prometheus e muitos serviços de cloud computing.</p>
+                </div>
+                <img src="img/go_logo.png" alt="Go Ecosystem" style="width: 250px; border-radius: 10px;">
+            </div>
+        </section>
+
+        <section class="explicacao">
+            <h2>Configuração do Ambiente</h2>
+            <p>Para programar em Go, você precisa instalar o Go SDK e um editor.</p>
+
+            <h3>Passos básicos:</h3>
+            <ol>
+                <li>Baixar e instalar Go de golang.org</li>
+                <li>Configurar GOPATH</li>
+                <li>Instalar um editor</li>
+                <li>Criar seu primeiro programa</li>
+            </ol>
+
+            <h3>Verificando a instalação:</h3>
+            <pre><code>go version
+go env</code></pre>
+
+            <div class="secoes">
+                <div class="secao">
+                    <h3>Estrutura de Projeto</h3>
+                    <ul>
+                        <li><strong>GOPATH:</strong> Diretório raiz dos projetos Go</li>
+                        <li><strong>src:</strong> Código-fonte</li>
+                        <li><strong>bin:</strong> Binários compilados</li>
+                        <li><strong>pkg:</strong> Pacotes compilados</li>
+                    </ul>
+                </div>
+
+                <div class="secao">
+                    <h3>Editores Recomendados</h3>
+                    <ul>
+                        <li>Visual Studio Code</li>
+                        <li>GoLand (JetBrains)</li>
+                        <li>Vim/Neovim</li>
+                        <li>Sublime Text</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="explicacao">
+            <h2>Primeiro Programa em Go</h2>
+            <p>Vamos criar o programa "Hello World" em Go.</p>
+
+            <h3>Estrutura básica:</h3>
+            <pre><code>package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("Olá, Mundo!")
+}</code></pre>
+
+            <h3>Para compilar e executar:</h3>
+            <pre><code>go run hello.go
+go build hello.go
+./hello</code></pre>
+
+            <div class="secoes">
+                <div class="secao">
+                    <h3>Estrutura do Programa</h3>
+                    <ul>
+                        <li><code>package main</code>: Define o pacote</li>
+                        <li><code>import</code>: Importa pacotes</li>
+                        <li><code>func main()</code>: Função principal</li>
+                        <li><code>fmt.Println()</code>: Imprime texto</li>
+                    </ul>
+                </div>
+
+                <div class="secao">
+                    <h3>Convenções de Código</h3>
+                    <ul>
+                        <li>Nomes exportados: PascalCase (MinhaFuncao)</li>
+                        <li>Nomes privados: camelCase (minhaFuncao)</li>
+                        <li>Nomes de variáveis: camelCase (minhaVariavel)</li>
+                        <li>Constantes: UPPER_CASE (MINHA_CONSTANTE)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="explicacao">
+            <h2>Tipos de Dados</h2>
+            <p>Go possui tipos de dados bem definidos.</p>
+
+            <pre><code>var nome string = "João"
+var idade int = 25
+var altura float64 = 1.75
+var ativo bool = true
+
+// Declaração curta
+nome := "Maria"
+idade := 30</code></pre>
+        </section>
+
+        <section class="explicacao">
+            <h2>Funções em Go</h2>
+            <p>Funções em Go são simples e poderosas.</p>
+
+            <pre><code>func saudacao(nome string) string {
+    return "Olá, " + nome
+}
+
+func soma(a, b int) int {
+    return a + b
+}
+
+// Múltiplos retornos
+func divisao(a, b int) (int, error) {
+    if b == 0 {
+        return 0, fmt.Errorf("divisão por zero")
+    }
+    return a / b, nil
+}</code></pre>
+        </section>
+
+        <section class="explicacao">
+            <h2>Goroutines - Concorrência Simples</h2>
+            <p>Goroutines são a forma elegante de Go para concorrência.</p>
+
+            <pre><code>package main
+
+import (
+    "fmt"
+    "time"
+)
+
+func tarefa(id int) {
+    for i := 0; i < 3; i++ {
+        fmt.Printf("Tarefa %d - Iteração %d\n", id, i)
+        time.Sleep(time.Second)
+    }
+}
+
+func main() {
+    go tarefa(1)
+    go tarefa(2)
+    time.Sleep(4 * time.Second)
+}</code></pre>
+        </section>
+
+        <section class="explicacao">
+            <h2>Channels - Comunicação entre Goroutines</h2>
+            <p>Channels permitem que goroutines se comuniquem de forma segura.</p>
+
+            <pre><code>package main
+
+import "fmt"
+
+func main() {
+    ch := make(chan string)
+    
+    go func() {
+        ch &lt;- "Olá do goroutine!"
+    }()
+    
+    mensagem := &lt;-ch
+    fmt.Println(mensagem)
+}</code></pre>
+        </section>
+    </main>
+
+    <!-- Toggle Switch de Tema Estético -->
+    <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider round">
+                <i class="fa-solid fa-sun icon-sun"></i>
+                <i class="fa-solid fa-moon icon-moon"></i>
+            </div>
+        </label>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

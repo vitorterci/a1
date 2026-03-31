@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <title>Ruby Master - Do Básico ao Avançado</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Open+Sans&display=swap" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+
+<body>
+    <header class="site-header">
+      <div class="header-container">
+        <div class="logo-container">
+          <img src="img/logo_infinite.svg" alt="ScriptHub" class="logo" style="width: 180px; height: auto;">
+          
+        </div>
+                <nav class="main-nav">
+                <a href="loading.html?target=index.html" class="nav-link">Início</a>
+
+                <!-- DROPDOWN CORRIGIDO -->
+                <div class="dropdown" id="langDropdown">
+                    <div class="nav-link" id="langBtn">
+                        Linguagens <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem; transition: 0.3s;"></i>
+                    </div>
+                    <div class="dropdown-menu">
+                        <div class="menu-column">
+                            <a href="loading.html?target=HTML.html" class="menu-item"><i class="fa-brands fa-html5"></i> HTML</a>
+                            <a href="loading.html?target=CSS.html" class="menu-item"><i class="fa-brands fa-css3-alt"></i> CSS</a>
+                            <a href="loading.html?target=JavaScript.html" class="menu-item"><i class="fa-brands fa-js"></i> JavaScript</a>
+                            <a href="#" class="menu-item"><i class="fa-brands fa-react"></i> React</a>
+                        </div>
+                        <div class="menu-column">
+                            <a href="loading.html?target=java.html" class="menu-item"><i class="fa-brands fa-java"></i> Java</a>
+                            <a href="#" class="menu-item"><i class="fa-brands fa-python"></i> Python</a>
+                            <a href="#" class="menu-item"><i class="fa-brands fa-php"></i> PHP</a>
+                            <a href="#" class="menu-item"><i class="fa-solid fa-code"></i> C#</a>
+                        </div>
+                        <div class="menu-column">
+                            <a href="#" class="menu-item"><i class="fa-brands fa-rust"></i> Rust</a>
+                            <a href="#" class="menu-item"><i class="fa-brands fa-swift"></i> Swift</a>
+                            <a href="#" class="menu-item"><i class="fa-solid fa-gem"></i> Ruby</a>
+                            <a href="#" class="menu-item"><i class="fa-solid fa-terminal"></i> Go</a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#" class="nav-link">Sobre</a>
+            </nav>
+        <div class="header-actions"><button id="theme-toggle" class="theme-btn" title="Alternar Tema">🌙</button><div class="profile-dropdown"><button class="profile-btn"><img src="https://ui-avatars.com/api/?name=User&background=7C3AED&color=fff" alt="Perfil" class="profile-avatar"></button><div class="profile-menu"><a href="#">⚙️ Configurações</a><a href="#">🎨 Personalização</a><a href="#">📚 Planos de Estudo</a><div class="menu-divider"></div><a href="login.html">🚪 Sair</a></div></div>
+          <a href="login.html" class="nav-link active">Login</a>
+        </div>
+      </div>
+    </header>
+    
+  <aside class="barra-lateral">
+    <button class="botao-flutuante" onclick="window.location.href='loading.html?target=' + document.referrer.split('/').pop() || 'index.html'" title="Voltar">Voltar</button>
+    <button class="barra-toggle" id="barraToggle">||||||</button>
+    
+    <div class="cartao">
+      <h2>Índice Ruby</h2>
+      <ul>
+        <li>Introdução ao Ruby</li>
+        <li>Configuração do Ambiente</li>
+        <li>Sintaxe Básica</li>
+        <li>Programação Orientada a Objetos</li>
+        <li>Blocos e Procs</li>
+        <li>Rails Framework</li>
+        <li>Gems e Bundler</li>
+        <li>Projeto Final</li>
+      </ul>
+      <a href="#" class="botao">Baixar Guia</a>
+    </div>
+
+    <div class="cartao">
+      <h2>Recursos Úteis</h2>
+      <ul>
+        <li>Documentação Oficial</li>
+        <li>RubyGems</li>
+        <li>Rails</li>
+        <li>Comunidade Ruby</li>
+        <li>Cheat Sheets</li>
+      </ul>
+      <a href="#" class="botao">Acessar Links</a>
+    </div>
+
+    <div class="cartao">
+      <img src="img/ruby_logo.png" alt="Ruby" class="cartao-icone">
+      <h2>RUBY</h2>
+      <ul>
+        <li>O que é Ruby?</li>
+        <li>Elegância</li>
+        <li>Produtividade</li>
+        <li>Comunidade</li>
+        <li>Rails</li>
+      </ul>
+      <a href="ruby.html" class="botao">Acessar RUBY</a>
+    </div>
+  </aside>
+  
+  <main class="conteudo-principal">
+    <h1>Ruby Master - Do Zero ao Avançado</h1>
+
+    <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+      <div style="flex: 2;">
+        <div class="explicacao">
+          <div>
+            <h3>Aprenda Ruby, a linguagem da elegância e produtividade</h3>
+            <h3>Domine desenvolvimento web rápido com o framework Rails</h3>
+            <h3>Desenvolvido para quem valoriza código limpo e desenvolvimento ágil</h3>
+          </div>
+        </div>
+      </div>
+
+      <div style="flex: 1; text-align: center;">
+        <img src="img/ruby_logo.png" alt="Logo Ruby" style="width: 200px;">
+      </div>
+    </div>
+
+    <section class="explicacao">
+      <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+        <div>
+          <h2 class="titulo">O que é Ruby?</h2>
+          <p>Ruby é uma linguagem de programação interpretada, orientada a objetos e de script, criada por Yukihiro Matsumoto em 1995. É conhecida por sua sintaxe elegante e foco em produtividade do desenvolvedor.</p>
+          
+          <p><strong>Características principais:</strong></p>
+          <ul>
+            <li><strong>Sintaxe Elegante:</strong> Código limpo e fácil de ler</li>
+            <li><strong>Orientada a Objetos:</strong> Tudo é um objeto em Ruby</li>
+            <li><strong>Dinâmica:</strong> Tipagem dinâmica e flexível</li>
+            <li><strong>Rails Framework:</strong> Framework web poderoso e produtivo</li>
+            <li><strong>Comunidade Ativa:</strong> Comunidade grande e acolhedora</li>
+          </ul>
+          
+          <p>Ruby é usado em startups, aplicações web, automação e scripts diversos.</p>
+        </div>
+        <img src="img/ruby_logo.png" alt="Ruby Ecosystem" style="width: 250px; border-radius: 10px;">
+      </div>
+    </section>
+
+    <section class="explicacao">
+      <h2>Configuração do Ambiente</h2>
+      <p>Para programar em Ruby, você precisa instalar Ruby e escolher um editor.</p>
+      
+      <h3>Passos básicos:</h3>
+      <ol>
+        <li>Instalar Ruby (via RVM, rbenv ou diretamente)</li>
+        <li>Instalar um editor (VS Code, Sublime Text)</li>
+        <li>Verificar a instalação</li>
+        <li>Criar seu primeiro script</li>
+      </ol>
+
+      <h3>Verificando a instalação:</h3>
+      <pre><code>ruby --version
+gem --version</code></pre>
+      
+      <div class="secoes">
+        <div class="secao">
+          <h3>Gerenciadores de Versão</h3>
+          <ul>
+            <li><strong>RVM:</strong> Ruby Version Manager</li>
+            <li><strong>rbenv:</strong> Gerenciador leve de versões</li>
+            <li><strong>asdf:</strong> Gerenciador universal</li>
+            <li><strong>Instalador Direto:</strong> ruby-lang.org</li>
+          </ul>
+        </div>
+        
+        <div class="secao">
+          <h3>Editores Recomendados</h3>
+          <ul>
+            <li>Visual Studio Code</li>
+            <li>RubyMine (JetBrains)</li>
+            <li>Sublime Text</li>
+            <li>Vim/Neovim</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="explicacao">
+      <h2>Primeiro Programa em Ruby</h2>
+      <p>Vamos criar o programa "Hello World" em Ruby.</p>
+      
+      <h3>Estrutura básica:</h3>
+      <pre><code>puts "Olá, Mundo!"</code></pre>
+      
+      <h3>Para executar:</h3>
+      <pre><code>ruby hello.rb</code></pre>
+      
+      <div class="secoes">
+        <div class="secao">
+          <h3>Sintaxe Básica</h3>
+          <ul>
+            <li><code>puts</code>: Imprime com quebra de linha</li>
+            <li><code>print</code>: Imprime sem quebra de linha</li>
+            <li><code>p</code>: Imprime com inspeção</li>
+            <li><code>#</code>: Comentário</li>
+            <li>Sem ponto-e-vírgula necessário</li>
+          </ul>
+        </div>
+        
+        <div class="secao">
+          <h3>Convenções de Código</h3>
+          <ul>
+            <li>Nomes de classes: PascalCase (MinhaClasse)</li>
+            <li>Nomes de métodos: snake_case (meu_metodo)</li>
+            <li>Nomes de variáveis: snake_case (minha_variavel)</li>
+            <li>Constantes: UPPER_CASE (MINHA_CONSTANTE)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="explicacao">
+      <h2>Variáveis e Tipos de Dados</h2>
+      <p>Ruby possui tipagem dinâmica e suporta vários tipos de dados.</p>
+      
+      <pre><code>nome = "João"        # String
+idade = 25           # Integer
+altura = 1.75        # Float
+ativo = true         # Boolean
+dados = [1, 2, 3]    # Array
+pessoa = {           # Hash
+  nome: "Maria",
+  idade: 30
+}</code></pre>
+    </section>
+
+    <section class="explicacao">
+      <h2>Métodos em Ruby</h2>
+      <p>Métodos são funções definidas em Ruby.</p>
+      
+      <pre><code>def saudacao(nome)
+  "Olá, #{nome}!"
+end
+
+puts saudacao("Maria")</code></pre>
+    </section>
+
+    <section class="explicacao">
+      <h2>Blocos e Iteradores</h2>
+      <p>Ruby é famoso por seus blocos e iteradores elegantes.</p>
+      
+      <pre><code>[1, 2, 3, 4, 5].each do |numero|
+  puts numero * 2
+end
+
+numeros = [1, 2, 3, 4, 5]
+pares = numeros.select { |n| n.even? }
+dobrados = numeros.map { |n| n * 2 }</code></pre>
+    </section>
+
+    <section class="explicacao">
+      <h2>Rails - Web Framework</h2>
+      <p>Rails é o framework web mais popular para Ruby.</p>
+      
+      <pre><code">rails new meu_app
+cd meu_app
+rails generate scaffold Post title:string content:text
+rails db:migrate
+rails server</code></pre>
+    </section>
+  </main>
+
+      <!-- Toggle Switch de Tema Estético -->
+    <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider round">
+                <i class="fa-solid fa-sun icon-sun"></i>
+                <i class="fa-solid fa-moon icon-moon"></i>
+            </div>
+        </label>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

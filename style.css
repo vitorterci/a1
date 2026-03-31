@@ -1,0 +1,661 @@
+  /* Reset e Variáveis */
+  
+   :root {
+      --bg-color: #f4f4f4;
+      --text-color: #333;
+      --sidebar-bg: #e0e0e0;
+      --card-bg: #ffffff;
+      --header-bg: #8e44ad;
+      --accent-color: #9b59b6;
+      --bullet-color: #6b2c91;
+      --code-bg: #f0e6ff;
+      --code-color: #6b2c91;
+  }
+  
+  [data-theme="dark"] {
+      --bg-color: #000;
+      --text-color: #fff;
+      --sidebar-bg: #111;
+      --card-bg: #1a1a1a;
+      --header-bg: #6b2c91;
+      --accent-color: #c67cf4;
+      --bullet-color: #8230c6;
+      --code-bg: #2e2e3e;
+      --code-color: #c792ea;
+  }
+  /* Estrutura Principal */
+  
+  body {
+      font-family: 'Open Sans', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      transition: all 0.3s ease;
+      margin: 0;
+      padding: 0;
+  }
+  /* Estilos do Header */
+  
+  .site-header {
+      background-color: #2a2a2a;
+      color: white;
+      padding: 0;
+      position: fixed;
+      top: 0;
+      left: 80px;
+      right: 0;
+      height: 70px;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+  }
+  
+  .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      height: 100%;
+      margin: 0 auto;
+      padding: 0 20px;
+  }
+  
+  .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+  }
+  
+  .logo {
+      width: 90px;
+      height: 90px;
+      transition: transform 0.3s;
+  }
+  
+  .logo:hover {
+      transform: rotate(15deg);
+  }
+  
+  .site-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+  }
+  
+  .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+  }
+  
+  .nav-link {
+      color: white;
+      text-decoration: none;
+      padding: 8px 15px;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+  }
+  
+  .nav-link:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+  }
+  
+  .nav-link.active {
+      background-color: var(--accent-color);
+      color: white;
+  }
+  
+  .header-actions {
+      display: flex;
+      gap: 10px;
+  }
+  
+  .search-toggle {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+      padding: 5px;
+      transition: all 0.3s ease;
+  }
+  
+  .search-toggle:hover {
+      transform: scale(1.2);
+  }
+  /* Ajustes para barra lateral expandida */
+  
+  .barra-lateral.expandida~.site-header {
+      left: 300px;
+  }
+  /* Responsividade */
+  
+  @media (max-width: 768px) {
+      .site-header {
+          left: 0;
+          height: 60px;
+      }
+      .main-nav {
+          gap: 5px;
+      }
+      .nav-link {
+          padding: 5px 10px;
+          font-size: 0.85rem;
+      }
+      .site-title {
+          font-size: 1.2rem;
+      }
+      .logo {
+          width: 30px;
+          height: 30px;
+      }
+  }
+  
+  @media (max-width: 480px) {
+      .site-title {
+          display: none;
+      }
+      .header-container {
+          padding: 0 10px;
+      }
+  }
+  /* Adicione isso na seção de Estrutura Principal */
+  
+  .site-header {
+      background-color: #2a2a2a;
+      color: white;
+      padding: 1rem 0;
+      position: fixed;
+      top: 0;
+      left: 80px;
+      /* Igual à largura da barra lateral */
+      right: 0;
+      height: 100px;
+      z-index: 90;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header-container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+  }
+  
+  .site-header h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      font-family: 'Cinzel', serif;
+  }
+  
+  .site-header p {
+      font-size: 1rem;
+      opacity: 0.9;
+      font-family: 'Open Sans', sans-serif;
+      margin: 0;
+  }
+  /* Ajuste para quando a barra lateral estiver expandida */
+  
+  .barra-lateral.expandida~.site-header {
+      left: 300px;
+  }
+  /* Ajuste o conteúdo principal para descer abaixo do cabeçalho */
+  
+  .conteudo-principal {
+      margin-top: 120px;
+      /* Altura do cabeçalho + margem */
+      margin-left: 80px;
+      padding: 2rem;
+      width: calc(100% - 80px);
+      transition: all 0.3s ease;
+  }
+  
+  .barra-lateral.expandida~.conteudo-principal {
+      margin-left: 300px;
+      width: calc(100% - 300px);
+  }
+  
+  .header-container {
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 20px;
+  }
+  
+  .site-header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      font-family: 'Cinzel', serif;
+  }
+  
+  .site-header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      font-family: 'Open Sans', sans-serif;
+  }
+  
+  img {
+      background: #f4f4f4;
+      border-radius: 20%;
+  }
+  
+  .barra-lateral {
+      width: 80px;
+      /* Barra lateral menor */
+      background: #2a2a2a;
+      /* Cor mais escura */
+      padding: 1rem;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease;
+      z-index: 100;
+  }
+  /* Barra lateral expandida */
+  
+  .barra-lateral.expandida {
+      width: 300px;
+  }
+  /* Esconder o texto quando a barra está recolhida */
+  
+  .barra-lateral:not(.expandida) .cartao h2,
+  .barra-lateral:not(.expandida) .cartao ul,
+  .barra-lateral:not(.expandida) .cartao .botao {
+      display: none;
+  }
+  /* Mostrar apenas ícones quando recolhida */
+  
+  .barra-lateral:not(.expandida) .cartao {
+      position: relative;
+  }
+  
+  .barra-lateral:not(.expandida) .cartao::before {
+      content: "";
+      display: block;
+      text-align: center;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+  }
+  /* Ícones para cada cartão */
+  
+  .barra-lateral:not(.expandida) .cartao:nth-child(1)::before {
+      content: "H";
+      /* Ícone para HTML */
+      color: #e34c26;
+  }
+  
+  .barra-lateral:not(.expandida) .cartao:nth-child(2)::before {
+      content: "C";
+      /* Ícone para CSS */
+      color: #2965f1;
+  }
+  
+  .barra-lateral:not(.expandida) .cartao:nth-child(3)::before {
+      content: "J";
+      /* Ícone para Java */
+      color: #f89820;
+  }
+  /* Botão de toggle */
+  
+  .barra-toggle {
+      background: var(--accent-color);
+      color: #fff;
+      border: none;
+      text-decoration: none;
+      border-radius: 20px;
+      padding: 10px 20px;
+      cursor: pointer;
+      display: inline-block;
+      margin-top: 1rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      font-weight: 600;
+  }
+  
+  .barra-toggle:hover {
+      background: #555;
+  }
+  /* Ajustar conteúdo principal quando barra expandida */
+  
+  .barra-lateral.expandida~.conteudo-principal {
+      margin-left: 330px;
+  }
+  
+  .barra-lateral:not(.expandida)~.conteudo-principal {
+      margin-left: 110px;
+  }
+  /* Estilo padrão - barra lateral expandida */
+  
+  .cartao-icone {
+      display: none;
+      /* Esconde o ícone por padrão */
+      width: 30px;
+      margin-bottom: 10px;
+  }
+  /* Quando a barra lateral estiver recolhida */
+  
+  .barra-lateral.recolhida .cartao {
+      text-align: center;
+      padding: 10px;
+  }
+  
+  .barra-lateral.recolhida .cartao h2,
+  .barra-lateral.recolhida .cartao ul,
+  .barra-lateral.recolhida .cartao .botao {
+      display: none;
+      /* Esconde o conteúdo normal */
+  }
+  
+  .barra-lateral.recolhida .cartao-icone {
+      display: block;
+      /* Mostra apenas o ícone */
+      margin: 0 auto;
+  }
+  
+  .conteudo-principal {
+      margin-left: 100%;
+      padding: 2rem;
+      width: calc(100% - 330px);
+      overflow-y: auto;
+  }
+  /* Tipografia */
+  
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+      font-family: 'Cinzel', serif;
+      margin-bottom: 1rem;
+      color: var(--accent-color);
+  }
+  
+  h1 {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 2rem;
+  }
+  
+  h2 {
+      font-size: 2rem;
+      margin-top: 1.5rem;
+  }
+  
+  h3 {
+      font-size: 1.5rem;
+  }
+  /* Componentes */
+  
+  .cartao {
+      background: var(--card-bg);
+      border-radius: 15px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      margin-top: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+  }
+  
+  .cartao::before {
+      background: url("img/html_transparent.png");
+  }
+  
+  .botao {
+      background: var(--accent-color);
+      color: #fff;
+      border: none;
+      text-decoration: none;
+      border-radius: 20px;
+      padding: 10px 20px;
+      cursor: pointer;
+      display: inline-block;
+      margin-top: 1rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      font-weight: 600;
+  }
+  
+  .botao:hover {
+      background: #a655d9;
+      transform: translateY(-2px);
+  }
+  
+  .botao-flutuante {
+      background: var(--accent-color);
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      padding: 10px 20px;
+      cursor: pointer;
+      display: inline-block;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      margin-bottom: 1rem;
+  }
+  
+  .botao-flutuante:hover {
+      background: #a655d9;
+      transform: scale(1.05);
+  }
+  /* Layouts */
+  
+  .conteiner-conteudo {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+  }
+  
+  .conteiner-conteudo .conteudo {
+      flex: 1 1 45%;
+      min-width: 300px;
+  }
+  
+  .explicacao {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 15px;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  /* ESTILOS DO MENU FLUTUANTE (DROPDOWN) */
+  
+  .dropdown {
+      position: relative;
+      display: inline-block;
+  }
+  
+  .dropdown.active .nav-link i {
+      transform: rotate(180deg);
+  }
+  
+  .dropdown-menu {
+      position: absolute;
+      top: calc(100% + 15px);
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      background-color: var(--card-bg);
+      min-width: 500px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      border-radius: 15px;
+      padding: 25px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 2000;
+      border-top: 4px solid var(--accent-color);
+  }
+  
+  .dropdown.active .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+  }
+  
+  .menu-column {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+  }
+  
+  .menu-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 12px;
+      text-decoration: none;
+      color: var(--text-color);
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+  }
+  
+  .menu-item:hover {
+      background-color: rgba(155, 89, 182, 0.1);
+      color: var(--accent-color);
+      transform: translateX(5px);
+  }
+  
+  .menu-item i {
+      width: 20px;
+      text-align: center;
+      font-size: 1.1rem;
+      color: var(--accent-color);
+  }
+  
+  .dropdown-menu::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 10px solid var(--accent-color);
+  }
+  
+  @media (max-width: 768px) {
+      .dropdown-menu {
+          min-width: 280px;
+          grid-template-columns: 1fr;
+          left: -50px;
+          transform: translateY(10px);
+      }
+      .dropdown.active .dropdown-menu {
+          transform: translateY(0);
+      }
+      .dropdown-menu::before {
+          left: 70px;
+      }
+  }
+  /* --- Estilo do Toggle Switch Estético --- */
+  .theme-switch-wrapper {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: flex;
+      align-items: center;
+      z-index: 2000;
+  }
+  
+  .theme-switch {
+      display: inline-block;
+      height: 34px;
+      position: relative;
+      width: 70px;
+  }
+  
+  .theme-switch input {
+      display: none;
+  }
+  
+  .slider {
+      background-color: #e0e0e0; /* Cor do modo claro (cinza claro) */
+      bottom: 0;
+      cursor: pointer;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      transition: .4s;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 8px;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .slider:before {
+      background-color: #fff;
+      bottom: 4px;
+      content: "";
+      height: 26px;
+      left: 4px;
+      position: absolute;
+      transition: .4s;
+      width: 26px;
+      z-index: 2;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+  
+  input:checked + .slider {
+      background-color: #2a2a2a; /* Cor do modo escuro (preto/cinza escuro) */
+  }
+  
+  input:checked + .slider:before {
+      transform: translateX(36px);
+      background-color: #444;
+  }
+  
+  .slider.round {
+      border-radius: 34px;
+  }
+  
+  .slider.round:before {
+      border-radius: 50%;
+  }
+  
+  /* Ícones dentro do slider */
+  .icon-sun {
+      color: #f39c12;
+      font-size: 14px;
+      z-index: 1;
+      margin-left: auto;
+  }
+  
+  .icon-moon {
+      color: #f1c40f;
+      font-size: 14px;
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 0.3s;
+  }
+  
+  input:checked + .slider .icon-sun {
+      opacity: 0;
+  }
+  
+  input:checked + .slider .icon-moon {
+      opacity: 1;
+      margin-right: auto;
+      margin-left: 0;
+  }

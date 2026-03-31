@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Análise do Código - Prog. Master Max</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Open+Sans&display=swap" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="header-container">
+      <div class="logo-container">
+        <img src="img/logo.png" alt="Prog. Master Max" class="logo">
+        <span class="site-title">Prog. Master Max</span>
+      </div>
+      <nav class="main-nav">
+                <a href="loading.html?target=index.html" class="nav-link">Início</a>
+
+                <!-- DROPDOWN CORRIGIDO -->
+                <div class="dropdown" id="langDropdown">
+                    <div class="nav-link" id="langBtn">
+                        Linguagens <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem; transition: 0.3s;"></i>
+                    </div>
+                    <div class="dropdown-menu">
+                        <div class="menu-column">
+                            <a href="loading.html?target=HTML.html" class="menu-item"><i class="fa-brands fa-html5"></i> HTML</a>
+                            <a href="loading.html?target=CSS.html" class="menu-item"><i class="fa-brands fa-css3-alt"></i> CSS</a>
+                            <a href="loading.html?target=JavaScript.html" class="menu-item"><i class="fa-brands fa-js"></i> JavaScript</a>
+                            <a href="#" class="menu-item"><i class="fa-brands fa-react"></i> React</a>
+                        </div>
+                        <div class="menu-column">
+                            <a href="loading.html?target=java.html" class="menu-item"><i class="fa-brands fa-java"></i> Java</a>
+                            <a href="#" class="menu-item"><i class="fa-brands fa-python"></i> Python</a>
+                            <a href="#" class="menu-item"><i class="fa-brands fa-php"></i> PHP</a>
+                            <a href="#" class="menu-item"><i class="fa-solid fa-code"></i> C#</a>
+                        </div>
+                        <div class="menu-column">
+                            <a href="#" class="menu-item"><i class="fa-brands fa-rust"></i> Rust</a>
+                            <a href="#" class="menu-item"><i class="fa-brands fa-swift"></i> Swift</a>
+                            <a href="#" class="menu-item"><i class="fa-solid fa-gem"></i> Ruby</a>
+                            <a href="#" class="menu-item"><i class="fa-solid fa-terminal"></i> Go</a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#" class="nav-link">Sobre</a>
+            </nav>
+      <div class="header-actions">
+        <a href="login.html" class="nav-link">Login</a>
+      </div>
+    </div>
+  </header>
+  
+  <aside class="barra-lateral">
+    <button class="botao-flutuante" onclick="window.location.href='loading.html?target=' + document.referrer.split('/').pop() || 'index.html'" title="Voltar">Voltar</button>
+    <button class="barra-toggle" id="barraToggle">||||||</button>
+    <br><br>
+    
+    <div class="cartao">
+      <img src="img/html_transparent.png" alt="HTML" class="cartao-icone">
+      <h2>HTML</h2>
+      <ul>
+        <li>O que é HTML?</li>
+        <li>Como funciona?</li>
+        <li>Estrutura básica</li>
+        <li>Principais tags</li>
+        <li>Exemplos de códigos</li>
+      </ul>
+      <a href="HTML.html" class="botao">Acessar HTML</a>
+    </div>
+
+    <div class="cartao">
+      <img src="img/css_transparent.png" alt="CSS" class="cartao-icone">
+      <h2>CSS</h2>
+      <ul>
+        <li>O que é CSS?</li>
+        <li>Sintaxe básica</li>
+        <li>Formas de aplicação</li>
+        <li>Seletores</li>
+        <li>Box Model</li>
+        <li>Estilos e layouts básicos</li>
+      </ul>
+      <a href="CSS.html" class="botao">Acessar CSS</a>
+    </div>
+
+    <div class="cartao">
+      <img src="img/js_logo.png" alt="JavaScript" class="cartao-icone">
+      <h2>JAVASCRIPT</h2>
+      <ul>
+        <li>Introdução ao JavaScript</li>
+        <li>Configuração do Ambiente</li>
+        <li>Sintaxe Básica</li>
+        <li>Manipulação do DOM</li>
+        <li>Eventos</li>
+        <li>Funções</li>
+        <li>Objetos e Arrays</li>
+      </ul>
+      <a href="javascript.html" class="botao">Acessar JavaScript</a>
+    </div>
+
+    <div class="cartao">
+      <img src="img/java_logo.png" alt="Java" class="cartao-icone">
+      <h2>JAVA</h2>
+      <ul>
+        <li>Introdução ao Java</li>
+        <li>Configuração do Ambiente</li>
+        <li>Sintaxe Básica</li>
+        <li>Estruturas de Controle</li>
+        <li>Orientação a Objetos</li>
+        <li>Coleções e Generics</li>
+        <li>Tratamento de Exceções</li>
+      </ul>
+      <a href="java.html" class="botao">Acessar JAVA</a>
+    </div>
+  </aside>
+  
+  <main class="conteudo-principal">
+    <h1>Análise Detalhada do Código do Site</h1>
+    
+    <section class="explicacao">
+      <h2>1. Estrutura Básica do HTML</h2>
+      <h3>Cabeçalho (head)</h3>
+      <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="pt-BR"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Prog. Master Max&lt;/title&gt;
+  &lt;link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Open+Sans&display=swap" rel="stylesheet"&gt;
+  &lt;link href="style.css" rel="stylesheet"&gt;
+&lt;/head&gt;
+      </code></pre>
+      <ul>
+        <li><code>&lt;!DOCTYPE html&gt;</code>: Define que este é um documento HTML5.</li>
+        <li><code>&lt;html lang="pt-BR"&gt;</code>: Define o idioma da página como português do Brasil.</li>
+        <li><code>&lt;meta charset="UTF-8"&gt;</code>: Garante que o navegador entenda caracteres especiais e acentos.</li>
+        <li><code>&lt;meta name="viewport"...&gt;</code>: Faz a página se adaptar a diferentes tamanhos de tela.</li>
+        <li><code>&lt;title&gt;</code>: Define o título que aparece na aba do navegador.</li>
+        <li><code>&lt;link&gt;</code>: Importa fontes do Google e o arquivo CSS de estilos.</li>
+      </ul>
+      
+      <h3>Corpo (body)</h3>
+      <pre><code>
+&lt;body&gt;
+  &lt;!-- Todo o conteúdo visível da página vai aqui --&gt;
+&lt;/body&gt;
+      </code></pre>
+    </section>
+    
+    <section class="explicacao">
+      <h2>2. Cabeçalho do Site (Header)</h2>
+      <pre><code>
+&lt;header class="site-header"&gt;
+  &lt;div class="header-container"&gt;
+    &lt;div class="logo-container"&gt;
+      &lt;img src="img/logo.png" alt="Prog. Master Max" class="logo"&gt;
+      &lt;span class="site-title"&gt;Prog. Master Max&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;nav class="main-nav"&gt;
+      &lt;a href="loading.html?target=index.html" class="nav-link active"&gt;Início&lt;/a&gt;
+      &lt;!-- Outros links de navegação --&gt;
+    &lt;/nav&gt;
+    &lt;div class="header-actions"&gt;
+      &lt;a href="login.html" class="nav-link active"&gt;Login&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/header&gt;
+      </code></pre>
+      <ul>
+        <li><code>&lt;header&gt;</code>: Área superior do site que contém logo e menu.</li>
+        <li><code>logo-container</code>: Div que agrupa a imagem do logo e o título.</li>
+        <li><code>main-nav</code>: Menu principal com links para outras páginas.</li>
+        <li><code>header-actions</code>: Área para ações como login.</li>
+      </ul>
+    </section>
+    
+    <section class="explicacao">
+      <h2>3. Barra Lateral</h2>
+      <pre><code>
+&lt;aside class="barra-lateral"&gt;
+  &lt;button class="botao-flutuante"&gt;Voltar&lt;/button&gt;
+  &lt;button class="barra-toggle" id="barraToggle"&gt;||||||&lt;/button&gt;
+  
+  &lt;div class="cartao"&gt;
+    &lt;img src="img/html_transparent.png" alt="HTML" class="cartao-icone"&gt;
+    &lt;h2&gt;HTML&lt;/h2&gt;
+    &lt;ul&gt;
+      &lt;li&gt;O que é HTML?&lt;/li&gt;
+      &lt;!-- Outros itens da lista --&gt;
+    &lt;/ul&gt;
+    &lt;a href="HTML.html" class="botao"&gt;Acessar HTML&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;!-- Outros cartões --&gt;
+&lt;/aside&gt;
+      </code></pre>
+      <ul>
+        <li><code>&lt;aside&gt;</code>: Define uma barra lateral.</li>
+        <li><code>botao-flutuante</code>: Botão para voltar à página anterior.</li>
+        <li><code>barra-toggle</code>: Botão para expandir/recolher a barra.</li>
+        <li><code>cartao</code>: Cada cartão representa uma seção (HTML, CSS, etc).</li>
+      </ul>
+    </section>
+    
+    <section class="explicacao">
+      <h2>4. Conteúdo Principal</h2>
+      <pre><code>
+&lt;main class="conteudo-principal"&gt;
+  &lt;h1&gt;Prog. Master Max&lt;/h1&gt;
+  
+  &lt;div class="conteiner-conteudo"&gt;
+    &lt;div class="conteudo"&gt;
+      &lt;div class="explicacao"&gt;
+        &lt;h3&gt;Domine os fundamentos da web...&lt;/h3&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!-- Outros conteúdos --&gt;
+  &lt;/div&gt;
+  
+  &lt;section class="explicacao"&gt;
+    &lt;h2&gt;O que é HTML?&lt;/h2&gt;
+    &lt;p&gt;HTML (HyperText Markup Language)...&lt;/p&gt;
+  &lt;/section&gt;
+  &lt;!-- Outras seções --&gt;
+&lt;/main&gt;
+      </code></pre>
+      <ul>
+        <li><code>&lt;main&gt;</code>: Conteúdo principal da página.</li>
+        <li><code>conteiner-conteudo</code>: Organiza os conteúdos em colunas.</li>
+        <li><code>explicacao</code>: Seções com textos explicativos.</li>
+      </ul>
+    </section>
+    
+    <section class="explicacao">
+      <h2>5. Rodapé</h2>
+      <pre><code>
+&lt;footer class="rodape"&gt;
+  &lt;p&gt;© 2025 Java Master - Todos os direitos reservados&lt;/p&gt;
+  &lt;div class="redes-sociais"&gt;
+    &lt;a href="#"&gt;&lt;img src="github-icon.png" alt="GitHub"&gt;&lt;/a&gt;
+    &lt;!-- Outras redes sociais --&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;
+      </code></pre>
+      <ul>
+        <li><code>&lt;footer&gt;</code>: Rodapé do site com informações de copyright e links.</li>
+      </ul>
+    </section>
+    
+    <section class="explicacao">
+      <h2>6. JavaScript (script.js)</h2>
+      <h3>Controle de Tema Claro/Escuro</h3>
+      <pre><code>
+// Quando a página carrega
+document.addEventListener('DOMContentLoaded', function() {
+  // Elementos importantes
+  const themeToggle = document.getElementById('theme-toggle');
+  const body = document.body;
+  
+  // Aplica o tema escolhido
+  function applyTheme(theme) {
+    if (theme === 'dark') {
+      body.setAttribute('data-theme', 'dark');
+      themeToggle.textContent = '☀️';
+    } else {
+      body.removeAttribute('data-theme');
+      themeToggle.textContent = '🌙';
+    }
+  }
+  
+  // Verifica qual tema usar
+  function checkTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    return savedTheme || (prefersDark ? 'dark' : 'light');
+  }
+  
+  // Aplica o tema inicial
+  applyTheme(checkTheme());
+  
+  // Alterna entre temas quando clicado
+  themeToggle.addEventListener('click', function() {
+    const currentTheme = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    applyTheme(currentTheme);
+    localStorage.setItem('theme', currentTheme);
+  });
+});
+      </code></pre>
+      
+      <h3>Controle da Barra Lateral</h3>
+      <pre><code>
+// Toggle da barra lateral
+const barraToggle = document.getElementById('barraToggle');
+const barraLateral = document.querySelector('.barra-lateral');
+
+barraToggle.addEventListener('click', function() {
+  barraLateral.classList.toggle('expandida');
+  
+  // Atualiza posição do botão
+  if (barraLateral.classList.contains('expandida')) {
+    this.style.left = '305px';
+  } else {
+    this.style.left = '85px';
+  }
+});
+      </code></pre>
+    </section>
+    
+    <section class="explicacao">
+      <h2>7. Estilos CSS (style.css)</h2>
+      <h3>Variáveis de Cores</h3>
+      <pre><code>
+:root {
+  --bg-color: #f4f4f4; /* Cor de fundo padrão */
+  --text-color: #333; /* Cor do texto */
+  /* Outras cores... */
+}
+
+[data-theme="dark"] {
+  --bg-color: #000; /* Cor de fundo no modo escuro */
+  --text-color: #fff; /* Cor do texto no modo escuro */
+  /* Outras cores... */
+}
+      </code></pre>
+      
+      <h3>Estilos do Corpo</h3>
+      <pre><code>
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+  display: flex;
+  min-height: 100vh;
+  margin: 0;
+  transition: all 0.3s ease;
+}
+      </code></pre>
+      
+      <h3>Estilos da Barra Lateral</h3>
+      <pre><code>
+.barra-lateral {
+  width: 80px;
+  background: #2a2a2a;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  transition: all 0.3s ease;
+}
+
+.barra-lateral.expandida {
+  width: 300px;
+}
+      </code></pre>
+      
+      <h3>Estilos dos Cartões</h3>
+      <pre><code>
+.cartao {
+  background: var(--card-bg);
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.barra-lateral:not(.expandida) .cartao h2,
+.barra-lateral:not(.expandida) .cartao ul,
+.barra-lateral:not(.expandida) .cartao .botao {
+  display: none;
+}
+      </code></pre>
+      
+      <h3>Botão de Tema</h3>
+      <pre><code>
+.theme-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--accent-color);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1000;
+}
+      </code></pre>
+    </section>
+    
+    <section class="explicacao">
+      <h2>Resumo de Funcionamento</h2>
+      <ul>
+        <li><strong>Estrutura:</strong> O HTML organiza o conteúdo em cabeçalho, barra lateral, conteúdo principal e rodapé.</li>
+        <li><strong>Estilos:</strong> O CSS define cores, tamanhos e posições de todos os elementos.</li>
+        <li><strong>Interatividade:</strong> O JavaScript controla:
+          <ul>
+            <li>Alternância entre temas claro/escuro</li>
+            <li>Expansão/recolhimento da barra lateral</li>
+            <li>Transições suaves entre estados</li>
+          </ul>
+        </li>
+        <li><strong>Responsividade:</strong> O site se adapta a diferentes tamanhos de tela usando media queries.</li>
+      </ul>
+      
+      <p>Cada parte do código trabalha em conjunto para criar uma experiência de aprendizado interativa e acessível para iniciantes em programação web.</p>
+    </section>
+    
+    <footer class="rodape">
+      <p>© 2025 Prog. Master Max - Todos os direitos reservados</p>
+      <p>Desenvolvido com 💜 pelos estudantes de desenvolvimento web (é IA)</p>
+      <div class="redes-sociais">
+        <a href="#"><img src="github-icon.png" alt="GitHub"></a>
+        <a href="#"><img src="linkedin-icon.png" alt="LinkedIn"></a>
+        <a href="#"><img src="twitter-icon.png" alt="Twitter"></a>
+      </div>
+      <div>
+        <h4>Usado para auxílio</h4>
+        <a href="https://flexboxlabs.netlify.app/">Flexbox Labs</a>
+        <a href="https://chat.deepseek.com/">Deepseek</a>
+      </div>
+    </footer>
+  </main>
+
+      <!-- Toggle Switch de Tema Estético -->
+    <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider round">
+                <i class="fa-solid fa-sun icon-sun"></i>
+                <i class="fa-solid fa-moon icon-moon"></i>
+            </div>
+        </label>
+    </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

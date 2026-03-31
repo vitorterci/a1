@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <title>C# Master - Do Básico ao Avançado</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="img/logo.png" alt="Logo" class="logo">
+                </a>
+                <span class="site-title">Prog. Master Max</span>
+            </div>
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link active">Início</a>
+
+                <!-- DROPDOWN CORRIGIDO -->
+                <div class="dropdown" id="langDropdown">
+                    <div class="nav-link" id="langBtn">
+                        Linguagens <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem; transition: 0.3s;"></i>
+                    </div>
+                    <div class="dropdown-menu">
+                        <div class="menu-column">
+                            <a href="HTML.html" class="menu-item"><i class="fa-brands fa-html5"></i> HTML</a>
+                            <a href="CSS.html" class="menu-item"><i class="fa-brands fa-css3-alt"></i> CSS</a>
+                            <a href="JavaScript.html" class="menu-item"><i class="fa-brands fa-js"></i> JavaScript</a>
+                            <a href="#" class="menu-item"><i class="fa-brands fa-react"></i> React</a>
+                            <a href="cpp.html" class="menu-item"><i class="fa-brands fa-code"></i> C++</a>
+                        </div>
+                        <div class="menu-column">
+                            <a href="java.html" class="menu-item"><i class="fa-brands fa-java"></i> Java</a>
+                            <a href="python.html" class="menu-item"><i class="fa-brands fa-python"></i> Python</a>
+                            <a href="php.html" class="menu-item"><i class="fa-brands fa-php"></i> PHP</a>
+                            <a href="c.html" class="menu-item"><i class="fa-solid fa-code"></i> C#</a>
+                        </div>
+                        <div class="menu-column">
+                            <a href="#" class="menu-item"><i class="fa-brands fa-rust"></i> Rust</a>
+                            <a href="swift.html" class="menu-item"><i class="fa-brands fa-swift"></i> Swift</a>
+                            <a href="ruby.html" class="menu-item"><i class="fa-solid fa-gem"></i> Ruby</a>
+                            <a href="go.html" class="menu-item"><i class="fa-solid fa-terminal"></i> Go</a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="sobre.html" class="nav-link">Sobre</a>
+            </nav>
+            <div class="header-actions">
+                <a href="login.html" class="nav-link active">Login</a>
+            </div>
+        </div>
+    </header>
+
+    <aside class="barra-lateral">
+        <button class="botao-flutuante" onclick="window.location.href='loading.html?target=' + document.referrer.split('/').pop() || 'index.html'" title="Voltar">Voltar</button>
+        <button class="barra-toggle" id="barraToggle">||||||</button>
+
+        <div class="cartao">
+            <h2>Índice C#</h2>
+            <ul>
+                <li>Introdução ao C#</li>
+                <li>Configuração do Ambiente</li>
+                <li>Sintaxe Básica</li>
+                <li>Programação Orientada a Objetos</li>
+                <li>LINQ</li>
+                <li>Async/Await</li>
+                <li>Desenvolvimento com .NET</li>
+                <li>Projeto Final</li>
+            </ul>
+            <a href="#" class="botao">Baixar Guia</a>
+        </div>
+
+        <div class="cartao">
+            <h2>Recursos Úteis</h2>
+            <ul>
+                <li>Documentação Oficial</li>
+                <li>.NET Framework/Core</li>
+                <li>Visual Studio</li>
+                <li>Comunidade C#</li>
+                <li>Cheat Sheets</li>
+            </ul>
+            <a href="#" class="botao">Acessar Links</a>
+        </div>
+
+        <div class="cartao">
+            <img src="img/csharp_logo.png" alt="C#" class="cartao-icone">
+            <h2>C#</h2>
+            <ul>
+                <li>O que é C#?</li>
+                <li>Plataforma .NET</li>
+                <li>Produtividade</li>
+                <li>Segurança</li>
+                <li>Comunidade</li>
+            </ul>
+            <a href="csharp.html" class="botao">Acessar C#</a>
+        </div>
+    </aside>
+
+    <main class="conteudo-principal">
+        <h1>C# Master - Do Zero ao Avançado</h1>
+
+        <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+            <div style="flex: 2;">
+                <div class="explicacao">
+                    <div>
+                        <h3>Aprenda C#, a linguagem moderna da plataforma .NET</h3>
+                        <h3>Desenvolva aplicações web, desktop e mobile com segurança e produtividade</h3>
+                        <h3>Desenvolvido para quem busca uma linguagem versátil e poderosa</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div style="flex: 1; text-align: center;">
+                <img src="img/csharp_logo.png" alt="Logo C#" style="width: 200px;">
+            </div>
+        </div>
+
+        <section class="explicacao">
+            <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+                <div>
+                    <h2 class="titulo">O que é C#?</h2>
+                    <p>C# é uma linguagem de programação moderna, orientada a objetos, desenvolvida pela Microsoft como parte da plataforma .NET. Combina a simplicidade de linguagens de alto nível com o poder de linguagens compiladas.</p>
+
+                    <p><strong>Características principais:</strong></p>
+                    <ul>
+                        <li><strong>Orientada a Objetos:</strong> Suporte completo a POO com herança, polimorfismo e encapsulamento</li>
+                        <li><strong>Segura:</strong> Gerenciamento automático de memória com garbage collection</li>
+                        <li><strong>Moderna:</strong> Recursos como LINQ, async/await e pattern matching</li>
+                        <li><strong>Multiplataforma:</strong> .NET Core permite executar em Windows, Linux e macOS</li>
+                        <li><strong>Produtiva:</strong> Sintaxe clara e ferramentas poderosas</li>
+                    </ul>
+
+                    <p>C# é usado em desenvolvimento web (ASP.NET), desktop (WPF), mobile (Xamarin) e jogos (Unity).</p>
+                </div>
+                <img src="img/csharp_logo.png" alt="C# Ecosystem" style="width: 250px; border-radius: 10px;">
+            </div>
+        </section>
+
+        <section class="explicacao">
+            <h2>Configuração do Ambiente</h2>
+            <p>Para programar em C#, você precisa instalar o .NET SDK e um editor ou IDE.</p>
+
+            <h3>Passos básicos:</h3>
+            <ol>
+                <li>Instalar o .NET SDK</li>
+                <li>Instalar Visual Studio ou Visual Studio Code</li>
+                <li>Criar um novo projeto</li>
+                <li>Executar seu programa</li>
+            </ol>
+
+            <h3>Verificando a instalação:</h3>
+            <pre><code>dotnet --version</code></pre>
+
+            <div class="secoes">
+                <div class="secao">
+                    <h3>Plataformas .NET</h3>
+                    <ul>
+                        <li><strong>.NET Framework:</strong> Windows apenas (legado)</li>
+                        <li><strong>.NET Core:</strong> Multiplataforma (moderno)</li>
+                        <li><strong>.NET 5+:</strong> Unificação do .NET Core</li>
+                        <li><strong>Mono:</strong> Implementação open-source</li>
+                    </ul>
+                </div>
+
+                <div class="secao">
+                    <h3>IDEs Recomendadas</h3>
+                    <ul>
+                        <li>Visual Studio (Completo)</li>
+                        <li>Visual Studio Code</li>
+                        <li>JetBrains Rider</li>
+                        <li>Monodevelop</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="explicacao">
+            <h2>Primeiro Programa em C#</h2>
+            <p>Vamos criar o programa "Hello World" em C#.</p>
+
+            <h3>Estrutura básica:</h3>
+            <pre><code>using System;
+
+class Program {
+    static void Main() {
+        Console.WriteLine("Olá, Mundo!");
+    }
+}</code></pre>
+
+            <h3>Para compilar e executar:</h3>
+            <pre><code>dotnet new console -n HelloWorld
+cd HelloWorld
+dotnet run</code></pre>
+
+            <div class="secoes">
+                <div class="secao">
+                    <h3>Estrutura do Projeto</h3>
+                    <ul>
+                        <li><code>using</code>: Importa namespaces</li>
+                        <li><code>class Program</code>: Define uma classe</li>
+                        <li><code>static void Main()</code>: Ponto de entrada</li>
+                        <li><code>Console.WriteLine()</code>: Imprime texto</li>
+                    </ul>
+                </div>
+
+                <div class="secao">
+                    <h3>Convenções de Código</h3>
+                    <ul>
+                        <li>Nomes de classes: PascalCase (MinhaClasse)</li>
+                        <li>Nomes de métodos: PascalCase (MeuMetodo)</li>
+                        <li>Nomes de variáveis: camelCase (minhaVariavel)</li>
+                        <li>Constantes: UPPER_CASE (MINHA_CONSTANTE)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="explicacao">
+            <h2>Tipos de Dados e Variáveis</h2>
+            <p>C# possui um sistema de tipos forte e seguro.</p>
+
+            <pre><code>int idade = 25;           // Inteiro
+double altura = 1.75;     // Ponto flutuante
+string nome = "João";     // Texto
+bool ativo = true;        // Booleano
+decimal preco = 99.99m;   // Decimal (financeiro)</code></pre>
+        </section>
+
+        <section class="explicacao">
+            <h2>Programação Orientada a Objetos</h2>
+            <p>C# oferece suporte completo a POO com classes, herança e polimorfismo.</p>
+
+            <pre><code>class Pessoa {
+    public string Nome { get; set; }
+    public int Idade { get; set; }
+    
+    public void Apresentar() {
+        Console.WriteLine($"Olá, meu nome é {Nome}");
+    }
+}
+
+var pessoa = new Pessoa { Nome = "Maria", Idade = 30 };
+pessoa.Apresentar();</code></pre>
+        </section>
+
+        <section class="explicacao">
+            <h2>LINQ - Language Integrated Query</h2>
+            <p>LINQ permite consultas integradas na linguagem.</p>
+
+            <pre><code>var numeros = new[] { 1, 2, 3, 4, 5 };
+var pares = numeros.Where(n => n % 2 == 0);
+var dobrados = pares.Select(n => n * 2);
+
+foreach (var n in dobrados) {
+    Console.WriteLine(n);
+}</code></pre>
+        </section>
+    </main>
+
+    <!-- Toggle Switch de Tema Estético -->
+    <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider round">
+                <i class="fa-solid fa-sun icon-sun"></i>
+                <i class="fa-solid fa-moon icon-moon"></i>
+            </div>
+        </label>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

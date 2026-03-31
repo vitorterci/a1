@@ -1,0 +1,91 @@
+
+<div class="cartao">
+  <img src="img/c_logo.png" alt="C" class="cartao-icone">
+  <h2>C</h2>
+  <ul>
+    <li>O que é C?</li>
+    <li>Linguagem de Baixo Nível</li>
+    <li>Performance</li>
+    <li>Portabilidade</li>
+    <li>Comunidade</li>
+  </ul>
+  <a href="c.html" class="botao">Acessar C</a>
+</div>
+
+<div class="cartao">
+  <img src="img/cpp_logo.png" alt="C++" class="cartao-icone">
+  <h2>C++</h2>
+  <ul>
+    <li>O que é C++?</li>
+    <li>Orientação a Objetos</li>
+    <li>Performance</li>
+    <li>Flexibilidade</li>
+    <li>Comunidade</li>
+  </ul>
+  <a href="cpp.html" class="botao">Acessar C++</a>
+</div>
+
+<div class="cartao">
+  <img src="img/csharp_logo.png" alt="C#" class="cartao-icone">
+  <h2>C#</h2>
+  <ul>
+    <li>O que é C#?</li>
+    <li>Plataforma .NET</li>
+    <li>Produtividade</li>
+    <li>Segurança</li>
+    <li>Comunidade</li>
+  </ul>
+  <a href="csharp.html" class="botao">Acessar C#</a>
+</div>
+
+<div class="cartao">
+  <img src="img/php_logo.png" alt="PHP" class="cartao-icone">
+  <h2>PHP</h2>
+  <ul>
+    <li>O que é PHP?</li>
+    <li>Desenvolvimento Web</li>
+    <li>Servidor</li>
+    <li>Comunidade</li>
+    <li>Frameworks</li>
+  </ul>
+  <a href="php.html" class="botao">Acessar PHP</a>
+</div>
+
+<div class="cartao">
+  <img src="img/ruby_logo.png" alt="Ruby" class="cartao-icone">
+  <h2>RUBY</h2>
+  <ul>
+    <li>O que é Ruby?</li>
+    <li>Elegância</li>
+    <li>Produtividade</li>
+    <li>Comunidade</li>
+    <li>Rails</li>
+  </ul>
+  <a href="ruby.html" class="botao">Acessar RUBY</a>
+</div>
+
+<div class="cartao">
+  <img src="img/go_logo.png" alt="Go" class="cartao-icone">
+  <h2>GO</h2>
+  <ul>
+    <li>O que é Go?</li>
+    <li>Simplicidade</li>
+    <li>Concorrência</li>
+    <li>Performance</li>
+    <li>Comunidade</li>
+  </ul>
+  <a href="go.html" class="botao">Acessar GO</a>
+</div>
+
+<div class="cartao">
+  <img src="img/swift_logo.png" alt="Swift" class="cartao-icone">
+  <h2>SWIFT</h2>
+  <ul>
+    <li>O que é Swift?</li>
+    <li>iOS Development</li>
+    <li>Segurança</li>
+    <li>Performance</li>
+    <li>Comunidade</li>
+  </ul>
+  <a href="swift.html" class="botao">Acessar SWIFT</a>
+</div>

@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <title>Tutoriais - ScriptHub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Estilos específicos para a página de tutoriais */
+        
+        .tutorials-container {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .sidebar-filters {
+            width: 250px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 1.5rem;
+            height: fit-content;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 130px;
+        }
+        /* MELHORIAS: Estilos do filtro com dropdown flutuante */
+        
+        .filter-section {
+            margin-bottom: 1.5rem;
+        }
+        
+        .filter-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .filter-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        /* Container do dropdown de filtro */
+        
+        .filtro-dropdown {
+            position: relative;
+            display: block;
+            width: 100%;
+        }
+        /* Botão do filtro com estilo melhorado */
+        
+        .filtro-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--accent-color) 0%, #8230c6 100%);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 8px rgba(198, 124, 244, 0.2);
+        }
+        
+        .filtro-btn:hover {
+            background: linear-gradient(135deg, #8230c6 0%, #6b2c91 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(198, 124, 244, 0.3);
+        }
+        
+        .filtro-btn:active {
+            transform: translateY(0);
+        }
+        
+        .filtro-btn i {
+            transition: transform 0.3s ease;
+            font-size: 0.8rem;
+        }
+        
+        .filtro-dropdown.ativo .filtro-btn i {
+            transform: rotate(180deg);
+        }
+        /* Menu dropdown do filtro */
+        
+        .filtro-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--card-bg);
+            border: 2px solid var(--accent-color);
+            border-radius: 8px;
+            margin-top: 8px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+            max-height: 0;
+            overflow: hidden;
+        }
+        
+        .filtro-dropdown.ativo .filtro-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        /* Itens do menu de filtro */
+        
+        .filtro-item {
+            display: block;
+            width: 100%;
+            padding: 10px 15px;
+            background: transparent;
+            border: none;
+            color: var(--text-color);
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .filtro-item:hover {
+            background: rgba(198, 124, 244, 0.1);
+            color: var(--accent-color);
+            padding-left: 20px;
+        }
+        
+        .filtro-item.ativo {
+            background: rgba(198, 124, 244, 0.2);
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+        
+        .filtro-item i {
+            margin-right: 8px;
+        }
+        /* Botão de limpeza de filtros */
+        
+        .botao-limpar-filtros {
+            width: 100%;
+            background: linear-gradient(135deg, rgba(198, 124, 244, 0.2) 0%, rgba(198, 124, 244, 0.1) 100%);
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            margin-top: 1.5rem;
+        }
+        
+        .botao-limpar-filtros:hover {
+            background: linear-gradient(135deg, rgba(198, 124, 244, 0.3) 0%, rgba(198, 124, 244, 0.2) 100%);
+            transform: scale(1.02);
+        }
+        
+        .botao-limpar-filtros:active {
+            transform: scale(0.98);
+        }
+        /* Grid de tutoriais */
+        
+        .tutorials-grid {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .tutorial-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .tutorial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(198, 124, 244, 0.2);
+        }
+        
+        .tutorial-thumbnail {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(135deg, #6b2c91 0%, #8230c6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tutorial-thumbnail.video {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+        
+        .tutorial-thumbnail.link {
+            background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+        }
+        
+        .play-icon {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .tutorial-card:hover .play-icon {
+            background: rgba(198, 124, 244, 0.4);
+            transform: scale(1.1);
+        }
+        
+        .tutorial-content {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .tutorial-category {
+            display: inline-block;
+            background: rgba(198, 124, 244, 0.2);
+            color: var(--accent-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            width: fit-content;
+        }
+        
+        .tutorial-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+        
+        .tutorial-description {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1rem;
+            flex: 1;
+        }
+        
+        .tutorial-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .tutorial-duration {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        
+        .tutorial-type {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.25rem 0.5rem;
+            background: rgba(198, 124, 244, 0.1);
+            border-radius: 8px;
+        }
+        
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 3rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        /* Responsividade da sidebar */
+        
+        .barra-lateral:not(.expandida) .filtro-btn {
+            padding: 10px;
+            font-size: 0;
+        }
+        
+        .barra-lateral:not(.expandida) .filtro-btn i {
+            font-size: 1.2rem;
+        }
+        
+        .barra-lateral:not(.expandida) .filtro-menu {
+            left: 100%;
+            top: 0;
+            margin-top: 0;
+            margin-left: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .tutorials-container {
+                flex-direction: column;
+            }
+            .sidebar-filters {
+                width: 100%;
+                position: static;
+            }
+            .tutorials-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="img/logo.png" alt="Logo" class="logo">
+                </a>
+                <span class="site-title">Prog. Master Max</span>
+            </div>
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link">Início</a>
+
+                <!-- DROPDOWN -->
+                <div class="dropdown" id="langDropdown">
+                    <div class="nav-link" id="langBtn">
+                        Linguagens <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem; transition: 0.3s;"></i>
+                    </div>
+                    <div class="dropdown-menu">
+                        <div class="menu-column">
+                            <a href="HTML.html" class="menu-item"><i class="fa-brands fa-html5"></i> HTML</a>
+                            <a href="CSS.html" class="menu-item"><i class="fa-brands fa-css3-alt"></i> CSS</a>
+                            <a href="JavaScript.html" class="menu-item"><i class="fa-brands fa-js"></i> JavaScript</a>
+                            <a href="#" class="menu-item"><i class="fa-brands fa-react"></i> React</a>
+                            <a href="cpp.html" class="menu-item"><i class="fa-brands fa-code"></i> C++</a>
+                        </div>
+                        <div class="menu-column">
+                            <a href="java.html" class="menu-item"><i class="fa-brands fa-java"></i> Java</a>
+                            <a href="python.html" class="menu-item"><i class="fa-brands fa-python"></i> Python</a>
+                            <a href="php.html" class="menu-item"><i class="fa-brands fa-php"></i> PHP</a>
+                            <a href="c.html" class="menu-item"><i class="fa-solid fa-code"></i> C#</a>
+                        </div>
+                        <div class="menu-column">
+                            <a href="#" class="menu-item"><i class="fa-brands fa-rust"></i> Rust</a>
+                            <a href="swift.html" class="menu-item"><i class="fa-brands fa-swift"></i> Swift</a>
+                            <a href="ruby.html" class="menu-item"><i class="fa-solid fa-gem"></i> Ruby</a>
+                            <a href="go.html" class="menu-item"><i class="fa-solid fa-terminal"></i> Go</a>
+                        </div>
+                    </div>
+                </div>
+                <a href="curiosidades.html" class="nav-link">Curiosidades</a>
+                <a href="tutoriais.html" class="nav-link active">Tutoriais</a>
+                <a href="sobre.html" class="nav-link">Sobre</a>
+            </nav>
+            <div class="header-actions">
+                <a href="login.html" class="nav-link active">Login</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="barra-lateral">
+        <button class="botao-flutuante" onclick="window.location.href='loading.html?target=' + document.referrer.split('/').pop() || 'index.html'" title="Voltar">Voltar</button>
+
+        <button class="barra-toggle" id="barraToggle">||||||</button>
+        <br><br>
+
+        <!-- Filtro Flutuante por Categoria - ADAPTADO DO CURIOSIDADES -->
+        <div class="filtro-dropdown" id="filtroDropdown">
+            <button class="filtro-btn" onclick="toggleFiltro()">
+                <i class="fas fa-filter"></i>
+                <span style="margin-left: 5px;">Filtrar por Categoria</span>
+                <i class="fas fa-chevron-down" style="margin-left: auto;"></i>
+            </button>
+            <div class="filtro-menu">
+                <button class="filtro-item ativo" onclick="filtrarPorCategoria('todas')">
+                    <i class="fas fa-globe"></i>Todas as Categorias
+                </button>
+                <button class="filtro-item" onclick="filtrarPorCategoria('web')">
+                    <i class="fas fa-code"></i>Web
+                </button>
+                <button class="filtro-item" onclick="filtrarPorCategoria('backend')">
+                    <i class="fas fa-server"></i>Backend
+                </button>
+                <button class="filtro-item" onclick="filtrarPorCategoria('mobile')">
+                    <i class="fas fa-mobile"></i>Mobile
+                </button>
+                <button class="filtro-item" onclick="filtrarPorCategoria('devops')">
+                    <i class="fas fa-cogs"></i>DevOps
+                </button>
+                <button class="filtro-item" onclick="filtrarPorCategoria('tools')">
+                    <i class="fas fa-wrench"></i>Ferramentas
+                </button>
+            </div>
+        </div>
+
+        <!-- Filtro Flutuante por Linguagem de Programação -->
+        <div class="filtro-dropdown" id="filtroLinguagemDropdown" style="margin-top: 1rem;">
+            <button class="filtro-btn" onclick="toggleFiltroLinguagem()">
+                <i class="fas fa-code"></i>
+                <span style="margin-left: 5px;">Filtrar por Linguagem</span>
+                <i class="fas fa-chevron-down" style="margin-left: auto;"></i>
+            </button>
+            <div class="filtro-menu">
+                <button class="filtro-item ativo" onclick="filtrarPorLinguagem('todas')">
+                    <i class="fas fa-globe"></i>Todas as Linguagens
+                </button>
+                <button class="filtro-item" onclick="filtrarPorLinguagem('html')">
+                    <i class="fab fa-html5"></i>HTML
+                </button>
+                <button class="filtro-item" onclick="filtrarPorLinguagem('css')">
+                    <i class="fab fa-css3-alt"></i>CSS
+                </button>
+                <button class="filtro-item" onclick="filtrarPorLinguagem('javascript')">
+                    <i class="fab fa-js"></i>JavaScript
+                </button>
+                <button class="filtro-item" onclick="filtrarPorLinguagem('react')">
+                    <i class="fab fa-react"></i>React
+                </button>
+                <button class="filtro-item" onclick="filtrarPorLinguagem('cpp')">
+                    <i class="fas fa-code"></i>C++
+                </button>
+                <button class="filtro-item" onclick="filtrarPorLinguagem('java')">
+                    <i class="fab fa-java"></i>Java
+                </button>
+                <button class="filtro-item" onclick="filtrarPorLinguagem('python')">
+                    <i class="fab fa-python"></i>Python
+                </button>
+                <button class="filtro-item" onclick="filtrarPorLinguagem('php')">
+                    <i class="fab fa-php"></i>PHP
+                </button>
+                <button class="filtro-item" onclick="filtrarPorLinguagem('csharp')">
+                    <i class="fas fa-code"></i>C#
+                </button>
+                <button class="filtro-item" onclick="filtrarPorLinguagem('rust')">
+                    <i class="fab fa-rust"></i>Rust
+                </button>
+                <button class="filtro-item" onclick="filtrarPorLinguagem('swift')">
+                    <i class="fab fa-swift"></i>Swift
+                </button>
+                <button class="filtro-item" onclick="filtrarPorLinguagem('ruby')">
+                    <i class="fas fa-gem"></i>Ruby
+                </button>
+                <button class="filtro-item" onclick="filtrarPorLinguagem('go')">
+                    <i class="fas fa-terminal"></i>Go
+                </button>
+            </div>
+        </div>
+
+        <!-- Cartão de Tutoriais -->
+        <div class="cartao">
+            <img src="img/html_transparent.png" alt="Tutoriais" class="cartao-icone">
+            <h2><span class="curiosidades-icon"><i class="fas fa-graduation-cap"></i></span>Tutoriais</h2>
+            <ul>
+                <li>Desenvolvimento Web</li>
+                <li>Backend</li>
+                <li>Mobile</li>
+                <li>DevOps</li>
+                <li>Ferramentas</li>
+            </ul>
+
+            <a href="tutoriais.html" class="botao">Explorar</a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="conteudo-principal">
+        <h1>Tutoriais e Guias</h1>
+
+        <!-- GRADE DE TUTORIAIS -->
+        <div class="tutorials-grid" id="tutorialsGrid">
+            <!-- Os tutoriais serão inseridos aqui via JavaScript -->
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 ScriptHub - Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Toggle Switch de Tema -->
+    <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider round">
+                <i class="fa-solid fa-sun icon-sun"></i>
+                <i class="fa-solid fa-moon icon-moon"></i>
+            </div>
+        </label>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Base de dados de tutoriais
+        const tutorials = [{
+            id: 1,
+            title: "Introdução ao HTML5",
+            description: "Aprenda os conceitos fundamentais do HTML5 e como estruturar uma página web.",
+            category: "web",
+            language: "html",
+            type: "video",
+            level: "beginner",
+            duration: "15 min",
+            thumbnail: "📄",
+            link: "https://www.youtube.com/watch?v=example1"
+        }, {
+            id: 2,
+            title: "CSS Grid Avançado",
+            description: "Domine o CSS Grid e crie layouts responsivos e complexos.",
+            category: "web",
+            language: "css",
+            type: "video",
+            level: "advanced",
+            duration: "45 min",
+            thumbnail: "🎨",
+            link: "https://www.youtube.com/watch?v=example2"
+        }, {
+            id: 3,
+            title: "JavaScript ES6+",
+            description: "Conheça as features modernas do JavaScript e melhore seu código.",
+            category: "web",
+            language: "javascript",
+            type: "video",
+            level: "intermediate",
+            duration: "60 min",
+            thumbnail: "⚡",
+            link: "https://www.youtube.com/watch?v=example3"
+        }, {
+            id: 4,
+            title: "Node.js e Express",
+            description: "Crie servidores web robustos com Node.js e Express.",
+            category: "backend",
+            language: "javascript",
+            type: "video",
+            level: "intermediate",
+            duration: "90 min",
+            thumbnail: "🚀",
+            link: "https://www.youtube.com/watch?v=example4"
+        }, {
+            id: 5,
+            title: "Banco de Dados SQL",
+            description: "Aprenda SQL e como trabalhar com bancos de dados relacionais.",
+            category: "backend",
+            language: "python",
+            type: "link",
+            level: "beginner",
+            duration: "Artigo",
+            thumbnail: "🗄️",
+            link: "https://devdocs.io/"
+        }, {
+            id: 6,
+            title: "React Hooks",
+            description: "Domine React Hooks e crie componentes funcionais poderosos.",
+            category: "web",
+            language: "react",
+            type: "video",
+            level: "intermediate",
+            duration: "75 min",
+            thumbnail: "⚛️",
+            link: "https://www.youtube.com/watch?v=example6"
+        }, {
+            id: 7,
+            title: "Docker Essentials",
+            description: "Containerize suas aplicações com Docker e melhore o deployment.",
+            category: "devops",
+            language: "python",
+            type: "video",
+            level: "intermediate",
+            duration: "120 min",
+            thumbnail: "🐳",
+            link: "https://www.youtube.com/watch?v=example7"
+        }, {
+            id: 8,
+            title: "Git e GitHub",
+            description: "Controle de versão e colaboração com Git e GitHub.",
+            category: "tools",
+            language: "javascript",
+            type: "link",
+            level: "beginner",
+            duration: "Documentação",
+            thumbnail: "🔗",
+            link: "https://github.com"
+        }, {
+            id: 9,
+            title: "React Native Basics",
+            description: "Desenvolva aplicativos móveis com React Native.",
+            category: "mobile",
+            language: "javascript",
+            type: "video",
+            level: "intermediate",
+            duration: "100 min",
+            thumbnail: "📱",
+            link: "https://www.youtube.com/watch?v=example9"
+        }, {
+            id: 10,
+            title: "TypeScript Avançado",
+            description: "Tipos avançados e padrões de design com TypeScript.",
+            category: "web",
+            language: "javascript",
+            type: "video",
+            level: "advanced",
+            duration: "80 min",
+            thumbnail: "📘",
+            link: "https://www.youtube.com/watch?v=example10"
+        }, {
+            id: 11,
+            title: "Kubernetes Deploy",
+            description: "Orquestração de containers com Kubernetes.",
+            category: "devops",
+            language: "go",
+            type: "link",
+            level: "advanced",
+            duration: "Guia",
+            thumbnail: "⚙️",
+            link: "https://kubernetes.io"
+        }, {
+            id: 12,
+            title: "Python para Data Science",
+            description: "Análise de dados com Python, Pandas e Matplotlib.",
+            category: "backend",
+            language: "python",
+            type: "video",
+            level: "intermediate",
+            duration: "150 min",
+            thumbnail: "📊",
+            link: "https://www.youtube.com/watch?v=example12"
+        }];
+
+        let categoriaAtiva = 'todas';
+        let linguagemAtiva = 'todas';
+
+        // Renderizar tutoriais
+        function renderTutorials(filteredTutorials = tutorials) {
+            const grid = document.getElementById('tutorialsGrid');
+
+            if (filteredTutorials.length === 0) {
+                grid.innerHTML = '<div class="no-results"><i class="fa-solid fa-search" style="font-size: 2rem; margin-bottom: 1rem;"></i><p>Nenhum tutorial encontrado com os filtros selecionados.</p></div>';
+                return;
+            }
+
+            grid.innerHTML = filteredTutorials.map(tutorial => `
+        <div class="tutorial-card" onclick="openTutorial('${tutorial.link}')">
+          <div class="tutorial-thumbnail ${tutorial.type}">
+            ${tutorial.thumbnail}
+            ${tutorial.type === 'video' ? '<div class="play-icon"><i class="fa-solid fa-play"></i></div>' : ''}
+          </div>
+          <div class="tutorial-content">
+            <span class="tutorial-category">${tutorial.category.toUpperCase()}</span>
+            <h3 class="tutorial-title">${tutorial.title}</h3>
+            <p class="tutorial-description">${tutorial.description}</p>
+            <div class="tutorial-footer">
+              <span class="tutorial-duration">
+                <i class="fa-solid fa-clock"></i> ${tutorial.duration}
+              </span>
+              <span class="tutorial-type">
+                <i class="fa-solid fa-${tutorial.type === 'video' ? 'play-circle' : 'link'}"></i> ${tutorial.type === 'video' ? 'Vídeo' : 'Link'}
+              </span>
+            </div>
+          </div>
+        </div>
+      `).join('');
+        }
+
+        // NOVO: Função para filtrar por categoria (adaptada do curiosidades.html)
+        function filtrarPorCategoria(categoria) {
+            categoriaAtiva = categoria;
+
+            // Atualizar botões do menu de categoria
+            document.querySelectorAll('#filtroDropdown .filtro-item').forEach(btn => {
+                btn.classList.remove('ativo');
+            });
+            event.target.classList.add('ativo');
+
+            // Fechar menu
+            document.getElementById('filtroDropdown').classList.remove('ativo');
+
+            // Aplicar filtros combinados
+            aplicarFiltros();
+        }
+
+        // NOVO: Função para filtrar por linguagem
+        function filtrarPorLinguagem(linguagem) {
+            linguagemAtiva = linguagem;
+
+            // Atualizar botões do menu de linguagem
+            document.querySelectorAll('#filtroLinguagemDropdown .filtro-item').forEach(btn => {
+                btn.classList.remove('ativo');
+            });
+            event.target.classList.add('ativo');
+
+            // Fechar menu
+            document.getElementById('filtroLinguagemDropdown').classList.remove('ativo');
+
+            // Aplicar filtros combinados
+            aplicarFiltros();
+        }
+
+        // NOVO: Função para aplicar filtros combinados
+        function aplicarFiltros() {
+            let tutorialsFiltrados = tutorials;
+
+            // Filtrar por categoria
+            if (categoriaAtiva !== 'todas') {
+                tutorialsFiltrados = tutorialsFiltrados.filter(t => t.category === categoriaAtiva);
+            }
+
+            // Filtrar por linguagem
+            if (linguagemAtiva !== 'todas') {
+                tutorialsFiltrados = tutorialsFiltrados.filter(t => t.language === linguagemAtiva);
+            }
+
+            renderTutorials(tutorialsFiltrados);
+        }
+
+        // NOVO: Função para abrir/fechar dropdown de categoria
+        function toggleFiltro() {
+            document.getElementById('filtroDropdown').classList.toggle('ativo');
+        }
+
+        // NOVO: Função para abrir/fechar dropdown de linguagem
+        function toggleFiltroLinguagem() {
+            document.getElementById('filtroLinguagemDropdown').classList.toggle('ativo');
+        }
+
+        // Abrir tutorial
+        function openTutorial(link) {
+            window.open(link, '_blank');
+        }
+
+        // Fechar menus ao clicar fora
+        document.addEventListener('click', function(event) {
+            const filtroDropdown = document.getElementById('filtroDropdown');
+            const filtroLinguagemDropdown = document.getElementById('filtroLinguagemDropdown');
+
+            if (!filtroDropdown.contains(event.target)) {
+                filtroDropdown.classList.remove('ativo');
+            }
+
+            if (!filtroLinguagemDropdown.contains(event.target)) {
+                filtroLinguagemDropdown.classList.remove('ativo');
+            }
+        });
+
+        // Renderizar tutoriais ao carregar a página
+        document.addEventListener('DOMContentLoaded', () => {
+            renderTutorials(tutorials);
+        });
+    </script>
+</body>
+
+</html>

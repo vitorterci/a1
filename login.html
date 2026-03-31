@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prog. Master Max - Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Open+Sans&display=swap" rel="stylesheet">
+    <style>
+        /* Variáveis de cor baseadas no esquema fornecido */
+        
+         :root {
+            --bg-color: #f4f4f4;
+            --text-color: #333;
+            --sidebar-bg: #e0e0e0;
+            --card-bg: #ffffff;
+            --header-bg: #2a2a2a;
+            --accent-color: #9b59b6;
+            --bullet-color: #6b2c91;
+            --code-bg: #f0e6ff;
+            --code-color: #6b2c91;
+            --light-text: #ffffff;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+            --input-border: #ddd;
+            --input-focus: rgba(155, 89, 182, 0.3);
+        }
+        
+        [data-theme="dark"] {
+            --bg-color: #000;
+            --text-color: #fff;
+            --sidebar-bg: #111;
+            --card-bg: #1a1a1a;
+            --header-bg: #6b2c91;
+            --accent-color: #c67cf4;
+            --bullet-color: #8230c6;
+            --code-bg: #2e2e3e;
+            --code-color: #c792ea;
+            --input-border: #444;
+            --input-focus: rgba(198, 124, 244, 0.3);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header.site-header {
+            background-color: var(--header-bg);
+            color: var(--light-text);
+            padding: 20px 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo {
+            height: 90px;
+            background: #f4f4f4;
+            border-radius: 20PX;
+        }
+        
+        .site-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--light-text);
+        }
+        
+        .main-nav {
+            display: flex;
+            gap: 20px;
+            margin-right: 500PX;
+        }
+        
+        .nav-link {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            padding: 5px 0;
+        }
+        
+        .nav-link:hover {
+            color: var(--accent-color);
+        }
+        
+        .nav-link.active {
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+        }
+        /* Estilos do formulário de login */
+        
+        .auth-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 200px);
+            padding: 40px 20px;
+        }
+        
+        .auth-box {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 40px;
+            width: 100%;
+            max-width: 450px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .auth-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .auth-box h2 {
+            color: var(--accent-color);
+            margin-bottom: 25px;
+            text-align: center;
+            font-size: 1.8rem;
+            font-family: 'Cinzel', serif;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--input-border);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: all 0.3s;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+        }
+        
+        .form-group input:focus {
+            border-color: var(--accent-color);
+            outline: none;
+            box-shadow: 0 0 0 3px var(--input-focus);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            text-align: center;
+            width: 100%;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn:hover {
+            background-color: var(--bullet-color);
+            transform: translateY(-2px);
+        }
+        
+        .switch-form {
+            text-align: center;
+            margin-top: 25px;
+            color: var(--text-color);
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+        
+        .switch-form a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .switch-form a:hover {
+            color: var(--bullet-color);
+            text-decoration: underline;
+        }
+        
+        footer.rodape {
+            text-align: center;
+            padding: 20px;
+            color: var(--light-text);
+            font-size: 0.9rem;
+            background-color: var(--header-bg);
+            transition: background-color 0.3s;
+        }
+        
+        footer.rodape p {
+            margin-bottom: 10px;
+        }
+        
+        .theme-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--header-bg);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+        
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            background: var(--accent-color);
+        }
+        /* Efeitos adicionais */
+        
+        .auth-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-color), var(--bullet-color));
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+        }
+        /* Placeholder styling */
+        
+         ::placeholder {
+            color: var(--text-color);
+            opacity: 0.5;
+        }
+        
+        .botao-flutuante {
+            background: var(--accent-color);
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            margin-left: 10PX;
+            margin-right: 290PX;
+        }
+        
+        .botao-flutuante:hover {
+            background: #a655d9;
+            transform: scale(1.05);
+        }
+        /* Responsividade */
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .main-nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .auth-box {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo-container">
+                <button class="botao-flutuante" onclick="history.back()" title="Voltar">Voltar</button>
+
+                <img src="img/logo.png" alt="Prog. Master Max" class="logo">
+                <span class="site-title">Prog. Master Max</span>
+            </div>
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link">Início</a>
+                <a href="HTML.html" class="nav-link">HTML</a>
+                <a href="CSS.html" class="nav-link">CSS</a>
+                <a href="JavaScript.html" class="nav-link">JavaScript</a>
+                <a href="java.html" class="nav-link">Java</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="auth-container">
+        <!-- Formulário de Login -->
+        <div class="auth-box">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required placeholder="seu@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Senha</label>
+                    <input type="password" id="loginPassword" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn">Entrar</button>
+            </form>
+            <div class="switch-form">
+                <p>Não tem uma conta? <a href="#" id="showRegister">Registre-se</a></p>
+            </div>
+        </div>
+
+        <!-- Formulário de Registro (inicialmente oculto) -->
+        <div class="auth-box" id="registerBox" style="display: none;">
+            <h2>Registrar</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="registerName">Nome Completo</label>
+                    <input type="text" id="registerName" required placeholder="Seu nome completo">
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" required placeholder="seu@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Senha</label>
+                    <input type="password" id="registerPassword" required placeholder="••••••••">
+                </div>
+                <div class="form-group">
+                    <label for="registerConfirmPassword">Confirmar Senha</label>
+                    <input type="password" id="registerConfirmPassword" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn">Criar Conta</button>
+            </form>
+            <div class="switch-form">
+                <p>Já tem uma conta? <a href="#" id="showLogin">Faça login</a></p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="rodape">
+        <p>© 2025 Prog. Master Max - Todos os direitos reservados</p>
+        <p>Desenvolvido com 💜 pelos estudantes de desenvolvimento web ( e IA)</p>
+
+
+    </footer>
+
+
+    <button class="theme-toggle" id="theme-toggle">🌓</button>
+
+    <script src="script.js"></script>
+
+    <script>
+        // Alternar entre login e registro
+        document.getElementById('showRegister').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector('.auth-box').style.display = 'none';
+            document.getElementById('registerBox').style.display = 'block';
+        });
+
+        document.getElementById('showLogin').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('registerBox').style.display = 'none';
+            document.querySelector('.auth-box').style.display = 'block';
+        });
+
+        // Validação dos formulários
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            if (!email || !password) {
+                alert('Por favor, preencha todos os campos!');
+                return;
+            }
+
+            alert('Login realizado com sucesso! Redirecionando...');
+            // Aqui você adicionaria a lógica real de login
+        });
+
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('registerName').value;
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('registerConfirmPassword').value;
+
+            if (!name || !email || !password || !confirmPassword) {
+                alert('Por favor, preencha todos os campos!');
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                alert('As senhas não coincidem!');
+                return;
+            }
+
+            if (password.length < 6) {
+                alert('A senha deve ter pelo menos 6 caracteres!');
+                return;
+            }
+
+            alert('Conta criada com sucesso! Faça login para continuar.');
+            document.getElementById('registerBox').style.display = 'none';
+            document.querySelector('.auth-box').style.display = 'block';
+            // Aqui você adicionaria a lógica real de registro
+        });
+
+        // Toggle de tema
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            themeToggle.textContent = newTheme === 'dark' ? '🌞' : '🌓';
+
+            // Salvar preferência no localStorage
+            localStorage.setItem('theme', newTheme);
+        });
+
+        // Verificar tema salvo ao carregar a página
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        themeToggle.textContent = savedTheme === 'dark' ? '🌞' : '🌓';
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>
