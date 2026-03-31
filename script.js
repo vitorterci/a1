@@ -117,3 +117,39 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+// --- Funções de Controle da Barra Lateral (Filtros) ---
+function toggleFiltro(id) {
+    const dropdown = document.getElementById(id);
+    if (!dropdown) return;
+    // Fecha outros dropdowns
+    document.querySelectorAll('.filtro-dropdown').forEach(d => {
+        if (d.id !== id) d.classList.remove('ativo');
+    });
+    dropdown.classList.toggle('ativo');
+}
+
+// Fechar menus de filtro ao clicar fora
+document.addEventListener('click', function(event) {
+    if (!event.target.closest('.filtro-dropdown')) {
+        document.querySelectorAll('.filtro-dropdown').forEach(d => {
+            d.classList.remove('ativo');
+        });
+    }
+});
+
+// Funções de placeholder para evitar erros de console em páginas que não têm a lógica de notícias
+function filtrarNoticias(categoria) {
+    console.log('Filtrando por categoria:', categoria);
+    if (typeof aplicarFiltros === 'function') {
+        // Se a página tiver a lógica de notícias (como curiosidades.html), executa
+        // Nota: curiosidades.html define sua própria lógica internamente
+    }
+}
+
+function ordenarNoticias(ordem) {
+    console.log('Ordenando por:', ordem);
+}
+
+function filtrarPorDataEspecifica(data) {
+    console.log('Filtrando por data:', data);
+}

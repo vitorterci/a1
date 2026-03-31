@@ -318,21 +318,51 @@
 
 <body>
 
-    <header class="site-header">
+        <header class="site-header">
         <div class="header-container">
             <div class="logo-container">
-                <button class="botao-flutuante" onclick="history.back()" title="Voltar">Voltar</button>
-
-                <img src="img/logo.png" alt="Prog. Master Max" class="logo">
+                <a href="index.html">
+                    <img src="img/logo.png" alt="Logo" class="logo">
+                </a>
                 <span class="site-title">Prog. Master Max</span>
             </div>
             <nav class="main-nav">
                 <a href="index.html" class="nav-link">Início</a>
-                <a href="HTML.html" class="nav-link">HTML</a>
-                <a href="CSS.html" class="nav-link">CSS</a>
-                <a href="JavaScript.html" class="nav-link">JavaScript</a>
-                <a href="java.html" class="nav-link">Java</a>
+
+                <!-- DROPDOWN CORRIGIDO -->
+                <div class="dropdown" id="langDropdown">
+                    <div class="nav-link" id="langBtn">
+                        Linguagens <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem; transition: 0.3s;"></i>
+                    </div>
+                    <div class="dropdown-menu">
+                        <div class="menu-column">
+                            <a href="HTML.html" class="menu-item"><i class="fa-brands fa-html5"></i> HTML</a>
+                            <a href="CSS.html" class="menu-item"><i class="fa-brands fa-css3-alt"></i> CSS</a>
+                            <a href="JavaScript.html" class="menu-item"><i class="fa-brands fa-js"></i> JavaScript</a>
+                            <a href="#" class="menu-item"><i class="fa-brands fa-react"></i> React</a>
+                            <a href="cpp.html" class="menu-item"><i class="fa-brands fa-code"></i> C++</a>
+                        </div>
+                        <div class="menu-column">
+                            <a href="java.html" class="menu-item"><i class="fa-brands fa-java"></i> Java</a>
+                            <a href="python.html" class="menu-item"><i class="fa-brands fa-python"></i> Python</a>
+                            <a href="php.html" class="menu-item"><i class="fa-brands fa-php"></i> PHP</a>
+                            <a href="c.html" class="menu-item"><i class="fa-solid fa-code"></i> C#</a>
+                        </div>
+                        <div class="menu-column">
+                            <a href="#" class="menu-item"><i class="fa-brands fa-rust"></i> Rust</a>
+                            <a href="swift.html" class="menu-item"><i class="fa-brands fa-swift"></i> Swift</a>
+                            <a href="ruby.html" class="menu-item"><i class="fa-solid fa-gem"></i> Ruby</a>
+                            <a href="go.html" class="menu-item"><i class="fa-solid fa-terminal"></i> Go</a>
+                        </div>
+                    </div>
+                </div>
+                <a href="curiosidades.html" class="nav-link">Curiosidades</a>
+                <a href="tutoriais.html" class="nav-link">tutoriais</a>
+                <a href="sobre.html" class="nav-link">Sobre</a>
             </nav>
+            <div class="header-actions">
+                <a href="login.html" class="nav-link active">Login</a>
+            </div>
         </div>
     </header>
 

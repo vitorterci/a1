@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <header class="site-header">
+        <header class="site-header">
         <div class="header-container">
             <div class="logo-container">
                 <a href="index.html">
@@ -22,7 +22,7 @@
                 <span class="site-title">Prog. Master Max</span>
             </div>
             <nav class="main-nav">
-                <a href="index.html" class="nav-link active">Início</a>
+                <a href="index.html" class="nav-link">Início</a>
 
                 <!-- DROPDOWN CORRIGIDO -->
                 <div class="dropdown" id="langDropdown">
@@ -51,7 +51,8 @@
                         </div>
                     </div>
                 </div>
-
+                <a href="curiosidades.html" class="nav-link">Curiosidades</a>
+                <a href="tutoriais.html" class="nav-link">tutoriais</a>
                 <a href="sobre.html" class="nav-link">Sobre</a>
             </nav>
             <div class="header-actions">
@@ -60,48 +61,71 @@
         </div>
     </header>
 
-    <aside class="barra-lateral">
+        <aside class="barra-lateral">
         <button class="botao-flutuante" onclick="window.location.href='loading.html?target=' + document.referrer.split('/').pop() || 'index.html'" title="Voltar">Voltar</button>
+
         <button class="barra-toggle" id="barraToggle">||||||</button>
+        <br><br>
 
-        <div class="cartao">
-            <h2>Índice C</h2>
-            <ul>
-                <li>Introdução ao C</li>
-                <li>Configuração do Ambiente</li>
-                <li>Sintaxe Básica</li>
-                <li>Tipos de Dados</li>
-                <li>Ponteiros</li>
-                <li>Estruturas e Uniões</li>
-                <li>Gerenciamento de Memória</li>
-                <li>Projeto Final</li>
-            </ul>
-            <a href="#" class="botao">Baixar Guia</a>
+        <!-- Filtro por Categoria -->
+        <div class="filtro-dropdown" id="filtroDropdown">
+            <button class="filtro-btn" onclick="toggleFiltro('filtroDropdown')">
+                <i class="fas fa-filter"></i>
+                <span style="margin-left: 5px;">Filtrar Categoria</span>
+                <i class="fas fa-chevron-down" style="margin-left: auto;"></i>
+            </button>
+            <div class="filtro-menu">
+                <button class="filtro-item ativo" onclick="filtrarNoticias('todas')">
+                    <i class="fas fa-globe" style="margin-right: 8px;"></i>Todas
+                </button>
+                <button class="filtro-item" onclick="filtrarNoticias('programacao')">
+                    <i class="fas fa-code" style="margin-right: 8px;"></i>Programação
+                </button>
+                <button class="filtro-item" onclick="filtrarNoticias('web')">
+                    <i class="fas fa-globe" style="margin-right: 8px;"></i>Web
+                </button>
+                <button class="filtro-item" onclick="filtrarNoticias('empresas')">
+                    <i class="fas fa-building" style="margin-right: 8px;"></i>Empresas
+                </button>
+                <button class="filtro-item" onclick="filtrarNoticias('ia')">
+                    <i class="fas fa-brain" style="margin-right: 8px;"></i>IA & ML
+                </button>
+            </div>
         </div>
 
-        <div class="cartao">
-            <h2>Recursos Úteis</h2>
-            <ul>
-                <li>Documentação Oficial</li>
-                <li>Compiladores (GCC, Clang)</li>
-                <li>IDEs (Code::Blocks, Dev-C++)</li>
-                <li>Comunidade C</li>
-                <li>Cheat Sheets</li>
-            </ul>
-            <a href="#" class="botao">Acessar Links</a>
+        <!-- Filtro por Data -->
+        <div class="filtro-dropdown" id="filtroDataDropdown">
+            <button class="filtro-btn" onclick="toggleFiltro('filtroDataDropdown')">
+                <i class="fas fa-calendar-alt"></i>
+                <span style="margin-left: 5px;">Filtrar por Data</span>
+                <i class="fas fa-chevron-down" style="margin-left: auto;"></i>
+            </button>
+            <div class="filtro-menu">
+                <button class="filtro-item ativo" onclick="ordenarNoticias('recente')">
+                    <i class="fas fa-sort-amount-down" style="margin-right: 8px;"></i>Mais Recentes
+                </button>
+                <button class="filtro-item" onclick="ordenarNoticias('antigo')">
+                    <i class="fas fa-sort-amount-up" style="margin-right: 8px;"></i>Mais Antigos
+                </button>
+                <div class="data-input-container">
+                    <label style="font-size: 0.8rem; display: block; margin-bottom: 5px;">Data Específica:</label>
+                    <input type="date" id="inputDataEspecifica" onchange="filtrarPorDataEspecifica(this.value)">
+                </div>
+            </div>
         </div>
 
+        <!-- Cartão de Curiosidades -->
         <div class="cartao">
-            <img src="img/c_logo.png" alt="C" class="cartao-icone">
-            <h2>C</h2>
+            <img src="img/html_transparent.png" alt="Curiosidades" class="cartao-icone">
+            <h2><span class="curiosidades-icon"><i class="fas fa-lightbulb"></i></span>Curiosidades</h2>
             <ul>
-                <li>O que é C?</li>
-                <li>Linguagem de Baixo Nível</li>
-                <li>Performance</li>
-                <li>Portabilidade</li>
-                <li>Comunidade</li>
+                <li>O que é HTML?</li>
+                <li>Como funciona?</li>
+                <li>Estrutura básica</li>
+                <li>Principais tags</li>
+                <li>Exemplos de códigos</li>
             </ul>
-            <a href="c.html" class="botao">Acessar C</a>
+            <a href="HTML.html" class="botao">Acessar HTML</a>
         </div>
     </aside>
 

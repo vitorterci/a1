@@ -14,7 +14,7 @@
 
 <body>
     <!-- Adicione isso logo após a abertura do <body> e antes do <aside> -->
-    <header class="site-header">
+        <header class="site-header">
         <div class="header-container">
             <div class="logo-container">
                 <a href="index.html">
@@ -23,7 +23,7 @@
                 <span class="site-title">Prog. Master Max</span>
             </div>
             <nav class="main-nav">
-                <a href="index.html" class="nav-link active">Início</a>
+                <a href="index.html" class="nav-link">Início</a>
 
                 <!-- DROPDOWN CORRIGIDO -->
                 <div class="dropdown" id="langDropdown">
@@ -52,7 +52,8 @@
                         </div>
                     </div>
                 </div>
-
+                <a href="curiosidades.html" class="nav-link">Curiosidades</a>
+                <a href="tutoriais.html" class="nav-link">tutoriais</a>
                 <a href="sobre.html" class="nav-link">Sobre</a>
             </nav>
             <div class="header-actions">
@@ -61,43 +62,63 @@
         </div>
     </header>
 
-    <aside class="barra-lateral">
+        <aside class="barra-lateral">
         <button class="botao-flutuante" onclick="window.location.href='loading.html?target=' + document.referrer.split('/').pop() || 'index.html'" title="Voltar">Voltar</button>
 
         <button class="barra-toggle" id="barraToggle">||||||</button>
-        <br>
+        <br><br>
 
-        <div class="cartao">
-            <h2>Índice CSS</h2>
-            <ul>
-                <li>Introdução ao CSS</li>
-                <li>Sintaxe e Seletores</li>
-                <li>Box Model</li>
-                <li>Layouts (Flexbox/Grid)</li>
-                <li>Responsividade</li>
-                <li>Animações e Transições</li>
-                <li>Pré-processadores</li>
-                <li>Boas Práticas</li>
-                <li>Projeto Final</li>
-            </ul>
-            <a href="#" class="botao">Baixar Guia</a>
+        <!-- Filtro por Categoria -->
+        <div class="filtro-dropdown" id="filtroDropdown">
+            <button class="filtro-btn" onclick="toggleFiltro('filtroDropdown')">
+                <i class="fas fa-filter"></i>
+                <span style="margin-left: 5px;">Filtrar Categoria</span>
+                <i class="fas fa-chevron-down" style="margin-left: auto;"></i>
+            </button>
+            <div class="filtro-menu">
+                <button class="filtro-item ativo" onclick="filtrarNoticias('todas')">
+                    <i class="fas fa-globe" style="margin-right: 8px;"></i>Todas
+                </button>
+                <button class="filtro-item" onclick="filtrarNoticias('programacao')">
+                    <i class="fas fa-code" style="margin-right: 8px;"></i>Programação
+                </button>
+                <button class="filtro-item" onclick="filtrarNoticias('web')">
+                    <i class="fas fa-globe" style="margin-right: 8px;"></i>Web
+                </button>
+                <button class="filtro-item" onclick="filtrarNoticias('empresas')">
+                    <i class="fas fa-building" style="margin-right: 8px;"></i>Empresas
+                </button>
+                <button class="filtro-item" onclick="filtrarNoticias('ia')">
+                    <i class="fas fa-brain" style="margin-right: 8px;"></i>IA & ML
+                </button>
+            </div>
         </div>
 
-        <div class="cartao">
-            <h2>Recursos Úteis</h2>
-            <ul>
-                <li>Documentação MDN</li>
-                <li>CSS Tricks</li>
-                <li>Ferramentas de DevTools</li>
-                <li>Validador CSS</li>
-                <li>Cheat Sheets</li>
-            </ul>
-            <a href="#" class="botao">Acessar Links</a>
+        <!-- Filtro por Data -->
+        <div class="filtro-dropdown" id="filtroDataDropdown">
+            <button class="filtro-btn" onclick="toggleFiltro('filtroDataDropdown')">
+                <i class="fas fa-calendar-alt"></i>
+                <span style="margin-left: 5px;">Filtrar por Data</span>
+                <i class="fas fa-chevron-down" style="margin-left: auto;"></i>
+            </button>
+            <div class="filtro-menu">
+                <button class="filtro-item ativo" onclick="ordenarNoticias('recente')">
+                    <i class="fas fa-sort-amount-down" style="margin-right: 8px;"></i>Mais Recentes
+                </button>
+                <button class="filtro-item" onclick="ordenarNoticias('antigo')">
+                    <i class="fas fa-sort-amount-up" style="margin-right: 8px;"></i>Mais Antigos
+                </button>
+                <div class="data-input-container">
+                    <label style="font-size: 0.8rem; display: block; margin-bottom: 5px;">Data Específica:</label>
+                    <input type="date" id="inputDataEspecifica" onchange="filtrarPorDataEspecifica(this.value)">
+                </div>
+            </div>
         </div>
 
+        <!-- Cartão de Curiosidades -->
         <div class="cartao">
-            <img src="img/html_transparent.png" alt="HTML" class="cartao-icone">
-            <h2>HTML</h2>
+            <img src="img/html_transparent.png" alt="Curiosidades" class="cartao-icone">
+            <h2><span class="curiosidades-icon"><i class="fas fa-lightbulb"></i></span>Curiosidades</h2>
             <ul>
                 <li>O que é HTML?</li>
                 <li>Como funciona?</li>
@@ -106,51 +127,6 @@
                 <li>Exemplos de códigos</li>
             </ul>
             <a href="HTML.html" class="botao">Acessar HTML</a>
-        </div>
-
-        <div class="cartao">
-            <img src="img/css_transparent.png" alt="CSS" class="cartao-icone">
-            <h2>CSS</h2>
-            <ul>
-                <li>O que é CSS?</li>
-                <li>Sintaxe básica</li>
-                <li>Formas de aplicação</li>
-                <li>Seletores</li>
-                <li>Box Model</li>
-                <li>Estilos e layouts básicos</li>
-            </ul>
-            <a href="CSS.html" class="botao">Acessar CSS</a>
-        </div>
-
-        <div class="cartao">
-            <img src="img/js_logo.png" alt="JavaScript" class="cartao-icone">
-            <h2>JAVASCRIPT</h2>
-            <ul>
-                <li>Introdução ao JavaScript</li>
-                <li>Configuração do Ambiente</li>
-                <li>Sintaxe Básica</li>
-                <li>Manipulação do DOM</li>
-                <li>Eventos</li>
-                <li>Funções</li>
-                <li>Objetos e Arrays</li>
-            </ul>
-            <a href="javascript.html" class="botao">Acessar JavaScript</a>
-        </div>
-
-
-        <div class="cartao">
-            <img src="img/java_logo.png" alt="Java" class="cartao-icone">
-            <h2>JAVA</h2>
-            <ul>
-                <li>Introdução ao Java</li>
-                <li>Configuração do Ambiente</li>
-                <li>Sintaxe Básica</li>
-                <li>Estruturas de Controle</li>
-                <li>Orientação a Objetos</li>
-                <li>Coleções e Generics</li>
-                <li>Tratamento de Exceções</li>
-            </ul>
-            <a href="java.html" class="botao">Acessar JAVA</a>
         </div>
     </aside>
 
